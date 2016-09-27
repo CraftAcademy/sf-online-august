@@ -1,5 +1,12 @@
 Given(/^I am on the "([^"]*)" page$/) do |page|
-  visit '/restaurant'
+  set_goto(page)
+  visit @goto
+end
+
+Then(/^I should be on the "([^"]*)" page$/) do |page|
+  set_goto(page)
+  visit @goto
+  expect(current_path).to eq @goto
 end
 
 Then(/^I should see:$/) do |table|
@@ -12,4 +19,9 @@ When(/^I fill in:$/) do |table|
   table.hashes.each do |hash|
       fill_in hash[:element], with: hash[:content]
   end
+end
+
+def set_goto(page)
+  @goto = '/add-dish' if page == "Create Dish"
+  @goto = restaurant_path if page == "restaurant"
 end
