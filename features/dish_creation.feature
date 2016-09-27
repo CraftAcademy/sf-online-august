@@ -18,7 +18,7 @@ Scenario: I create a dish
     | Dish Name        | Pizza                |
     | Dish description | Delicious pizza      |
     | Price            | 7000kr               |
-    | Allergy info     | gluten               |
+    | Allergy Info     | gluten               |
     | Ingredients      | cheese, sauce, crust |
     | Calories         | 10000                |
   Then I should be on the "dish" page

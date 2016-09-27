@@ -1,1 +1,37 @@
-Here's the new dish page.
+<h1>Add a Dish</h1>
+
+<%= form_for :dish do |form| %>
+  <p>
+   <%= form.label :dish_name, 'Dish Name' %><br>
+   <%= form.text_field :dish_name %>
+ </p>
+
+ <p>
+   <%= form.label :dish_desc, 'Dish description' %><br>
+   <%= form.text_area :dish_desc %>
+ </p>
+
+ <p>
+   <%= form.label :dish_price, 'Price' %><br>
+   <%= form.text_field :dish_price %>
+ </p>
+
+ <p>
+   <%= form.label :dish_allergy, 'Allergy Info' %><br>
+   <%= form.text_area :dish_allergy %>
+ </p>
+
+ <p>
+   <%= form.label :dish_cal, 'Calories' %><br>
+   <%= form.text_field :dish_cal %>
+ </p>
+
+ <p>
+   <%= form.label :dish_ingredients, 'Ingredients' %><br>
+   <%= form.text_field :dish_ingredients %>
+ </p>
+
+ <p>
+   <%= form.submit 'Add a Dish' %>
+ </p>
+<% end %>
