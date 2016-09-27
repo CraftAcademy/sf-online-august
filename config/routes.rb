@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  get '/restaurant'
+  get '/restaurant', controller: :restaurant, action: :show
 end
