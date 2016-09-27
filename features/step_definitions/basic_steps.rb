@@ -22,6 +22,6 @@ When(/^I fill in:$/) do |table|
 end
 
 def set_goto(page)
-  @goto = '/add-dish' if page == "Create Dish"
+  @goto = new_dish_path if page == "Create Dish"
   @goto = restaurant_path if page == "restaurant"
 end
