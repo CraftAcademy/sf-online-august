@@ -21,6 +21,14 @@ When(/^I fill in:$/) do |table|
   end
 end
 
+When(/^I click the "([^"]*)" button$/) do |button|
+  click_button button
+end
+
+
+
+private
+
 def set_goto(page)
   @goto = new_dish_path if page == "Create Dish"
   @goto = restaurant_path if page == "restaurant"

@@ -1,6 +1,6 @@
 <h1>Add a Dish</h1>
 
-<%= form_for :dish do |form| %>
+<%= form_for :dish, url: '/dishes' do |form| %>
   <p>
    <%= form.label :dish_name, 'Dish Name' %><br>
    <%= form.text_field :dish_name %>

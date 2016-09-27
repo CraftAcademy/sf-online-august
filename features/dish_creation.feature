@@ -21,12 +21,13 @@ Scenario: I create a dish
     | Allergy Info     | gluten               |
     | Ingredients      | cheese, sauce, crust |
     | Calories         | 10000                |
+  When I click the "Add a Dish" button
   Then I should be on the "dish" page
   And I should see:
-    | content             |
-    | Dish Name           |
-    | Dish description    |
-    | Price               |
-    | Allergy Info        |
-    | Ingredients         |
-    | Calories            |
+    | content              |
+    | Pizza                |
+    | Delicious pizza      |
+    | 7000kr               |
+    | gluten               |
+    | cheese, sauce, crust |
+    | 10000                |
