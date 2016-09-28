@@ -22,7 +22,7 @@ Scenario: I create a dish
     | Ingredients      | cheese, sauce, crust |
     | Calories         | 10000                |
   When I click the "Add a Dish" button
-  Then I should be on the "dish" page
+  Then I should be on the dish page for "Pizza"
   And I should see:
     | content              |
     | Pizza                |
