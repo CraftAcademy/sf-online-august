@@ -4,7 +4,7 @@ class DishesController < ApplicationController
   end
 
   def create
-    @dish = Dish.new(sanitized_params)
+    @dish = Dish.new(dish_params)
     if @dish.save
       render :show
     else
@@ -18,7 +18,7 @@ class DishesController < ApplicationController
   end
 
   private
-  def sanitized_params
+  def dish_params
     params.require(:dish).permit(:dish_name, :dish_desc, :dish_price, :dish_allergy, :dish_ingredients, :dish_cal)
   end
 end
