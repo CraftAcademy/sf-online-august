@@ -23,10 +23,4 @@ class DishesController < ApplicationController
   def sanitized_params
     params.require(:dish).permit(:dish_name, :dish_desc, :dish_price, :dish_allergy, :dish_ingredients, :dish_cal)
   end
-
-  def error_message
-    @dish.errors.full_message each do |message|
-      message
-    end
-  end
 end
