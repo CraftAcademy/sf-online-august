@@ -6,7 +6,7 @@ class DishesController < ApplicationController
   end
 
   def create
-    @dish = Dish.new(dish_name: params[:dish][:dish_name], dish_desc: params[:dish][:dish_desc], dish_price: params[:dish][:dish_price])
+    @dish = Dish.new(dish_name: params[:dish][:dish_name], dish_desc: params[:dish][:dish_desc], dish_price: params[:dish][:dish_price], dish_allergy: params[:dish][:dish_allergy], dish_ingredients: params[:dish][:dish_ingredients], dish_cal: params[:dish][:dish_cal])
     if @dish.save
       redirect_to dish_path(@dish)
     else

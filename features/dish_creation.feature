@@ -27,7 +27,7 @@ Scenario: I create a dish
     | content              |
     | Pizza                |
     | Delicious pizza      |
-    | 7000kr               |
+    | 7000                 |
     | gluten               |
     | cheese, sauce, crust |
     | 10000                |
