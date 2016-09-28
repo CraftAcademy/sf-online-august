@@ -11,7 +11,7 @@ class DishesController < ApplicationController
       render :show
     else
       flash[:error] = @dish.errors.full_messages.first
-      render :new # try to use render instead of redirect
+      render :new
     end
   end
 
