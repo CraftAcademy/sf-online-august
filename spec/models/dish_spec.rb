@@ -12,6 +12,7 @@ RSpec.describe Dish, type: :model do
 
   describe 'Validations' do
     it { is_expected.to validate_presence_of :dish_name }
+    it { is_expected.to validate_presence_of :dish_desc }
     it { is_expected.to validate_presence_of :dish_price }
   end
 
