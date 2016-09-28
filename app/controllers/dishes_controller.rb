@@ -6,16 +6,21 @@ class DishesController < ApplicationController
   end
 
   def create
-    @dish = Dish.new(dish_name: params[:dish][:dish_name], dish_desc: params[:dish][:dish_desc], dish_price: params[:dish][:dish_price], dish_allergy: params[:dish][:dish_allergy], dish_ingredients: params[:dish][:dish_ingredients], dish_cal: params[:dish][:dish_cal])
+    @dish = Dish.new(sanitized_params)
     if @dish.save
       render :show
     else
       # Display flash message
-      redirect_to new_dish_path
+      redirect_to new_dish_path # try to use render instead of redirect
     end
   end
 
   def show
     @dish = Dish.find(params[:id])
+  end
+
+  private
+  def sanitized_params
+    params.require(:dish).permit(:dish_name, :dish_desc, :dish_price, :dish_allergy, :dish_ingredients, :dish_cal)
   end
 end
