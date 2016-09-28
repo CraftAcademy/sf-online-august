@@ -14,4 +14,10 @@ RSpec.describe Dish, type: :model do
     it { is_expected.to validate_presence_of :dish_name }
     it { is_expected.to validate_presence_of :dish_price }
   end
+
+  describe 'Factory' do
+    it 'should have valid Factory' do
+      expect(FactoryGirl.create(:dish)).to be_valid
+    end
+  end
 end
