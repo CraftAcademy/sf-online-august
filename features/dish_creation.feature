@@ -41,3 +41,23 @@ Scenario: I attempt to create a dish with bad info
     | Price            | 7000kr               |
   When I click the "Add a Dish" button
   Then I should see "Dish name can't be blank"
+
+Scenario: I attempt to create a dish without description
+  Given I am on the "Create Dish" page
+  When I fill in:
+    | element          | content              |
+    | Dish Name        | Pizza                |
+    | Dish description |                      |
+    | Price            | 7000kr               |
+  When I click the "Add a Dish" button
+  Then I should see "Dish desc can't be blank"
+
+Scenario: I attempt to create a dish without price
+  Given I am on the "Create Dish" page
+  When I fill in:
+    | element          | content              |
+    | Dish Name        | pizza                |
+    | Dish description | Delicious pizza      |
+    | Price            |                      |
+  When I click the "Add a Dish" button
+  Then I should see "Dish price can't be blank"
