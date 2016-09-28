@@ -1,5 +1,3 @@
-require 'pry'
-
 class DishesController < ApplicationController
   def new
     @dish = Dish.new
