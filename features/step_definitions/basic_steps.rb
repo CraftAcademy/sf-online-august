@@ -4,7 +4,6 @@ end
 
 Then(/^I should be on the "([^"]*)" page$/) do |page|
   expected_page = goto(page)
-  visit expected_page
   expect(current_path).to eq expected_page
 end
 
