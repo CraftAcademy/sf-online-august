@@ -10,8 +10,8 @@ class DishesController < ApplicationController
     if @dish.save
       render :show
     else
-      # Display flash message
-      redirect_to new_dish_path # try to use render instead of redirect
+      flash[:error] = @dish.errors.full_messages.first
+      render :new # try to use render instead of redirect
     end
   end
 
@@ -22,5 +22,11 @@ class DishesController < ApplicationController
   private
   def sanitized_params
     params.require(:dish).permit(:dish_name, :dish_desc, :dish_price, :dish_allergy, :dish_ingredients, :dish_cal)
+  end
+
+  def error_message
+    @dish.errors.full_message each do |message|
+      message
+    end
   end
 end

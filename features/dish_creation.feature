@@ -31,3 +31,13 @@ Scenario: I create a dish
     | gluten               |
     | cheese, sauce, crust |
     | 10000                |
+
+Scenario: I attempt to create a dish with bad info
+  Given I am on the "Create Dish" page
+  When I fill in:
+    | element          | content              |
+    | Dish Name        |                      |
+    | Dish description | Delicious pizza      |
+    | Price            | 7000kr               |
+  When I click the "Add a Dish" button
+  Then I should see "Dish name can't be blank"
