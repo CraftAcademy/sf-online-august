@@ -1,12 +1,11 @@
 Given(/^I am on the "([^"]*)" page$/) do |page|
-  set_goto(page)
-  visit @goto
+  visit goto(page)
 end
 
 Then(/^I should be on the "([^"]*)" page$/) do |page|
-  set_goto(page)
-  visit @goto
-  expect(current_path).to eq @goto
+  expected_page = goto(page)
+  visit expected_page
+  expect(current_path).to eq expected_page
 end
 
 Then(/^I should see:$/) do |table|
@@ -29,12 +28,21 @@ Then(/^I should see "([^"]*)"$/) do |content|
   expect(page).to have_content content
 end
 
-
-
+When(/^I click the link "([^"]*)"$/) do |link|
+  click_link(link)
+end
 
 private
 
-def set_goto(page)
-  @goto = new_dish_path if page == "Create Dish"
-  @goto = restaurant_path if page == "restaurant"
+def goto(page)
+  case page
+  when 'restaurant'
+    restaurant_path
+  when 'menu'
+    menu_path
+  when 'Create Dish'
+    new_dish_path
+  else
+    root_path
+  end
 end
