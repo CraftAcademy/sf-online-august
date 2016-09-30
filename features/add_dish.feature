@@ -19,7 +19,7 @@ Scenario: I create a dish and put it on a menu
     | Dish Name        | Pizza                |
     | Dish description | Delicious pizza      |
     | Price            | 7000kr               |
-  And select "Lunch" from "Add to a menu"
+  And I check the "Lunch" box
   When I click the "Add a Dish" button
   Then I should see "Pizza"
   And I should see "Lunch"

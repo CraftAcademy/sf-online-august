@@ -3,8 +3,8 @@ Then(/^I should be on the dish page for "([^"]*)"$/) do |name|
   expect(current_path).to eq dish_path(dish)
 end
 
-When(/^select "([^"]*)" from "([^"]*)"$/) do |menu_name, field_name|
-  page.check(menu_name)
+When(/^I check the "([^"]*)" box$/) do |menu|
+  page.check(menu)
 end
 
 When(/^visit the "([^"]*)" menu page$/) do |menu_name|
