@@ -5,9 +5,6 @@ end
 
 When(/^select "([^"]*)" from "([^"]*)"$/) do |menu_name, field_name|
   page.check(menu_name)
-  # within('#menus') do
-  #   page.find('input[type=checkbox]').set(true)
-  # end
 end
 
 When(/^visit the "([^"]*)" menu page$/) do |menu_name|
