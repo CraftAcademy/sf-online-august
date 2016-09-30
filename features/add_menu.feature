@@ -17,7 +17,8 @@ Scenario: Adding a menu
 
 Scenario: Viewing my menu
   Given I create a menu "Lunch"
-  Then I should be on the "menu" page for "Lunch"
+  Then I should see "Successfully added menu"
+  Then I should see "Lunch"
 
 Scenario: Not adding a menu
   Given I am on the "add menu" page
