@@ -53,9 +53,9 @@ Then(/^show me the page$/) do
   save_and_open_page
 end
 
-Given(/^am a registered Customer$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
+#Given(/^am a registered Customer$/) do
+#  pending # Write code here that turns the phrase above into concrete actions
+#end
 
 
 private
