@@ -6,7 +6,6 @@
       %br/
       = f.text_field :title, id: 'title'
       %br/
-      %h2 Add dishes to menu:
       - if !@menu.dishes.nil?
         %h3 Check to add dishes to menu:
         = f.collection_check_boxes :dish_ids, @dishes, :id, :dish_name do |b|
