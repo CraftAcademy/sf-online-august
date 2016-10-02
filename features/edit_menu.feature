@@ -15,7 +15,7 @@ Scenario: I edit my menu
   Then I should see:
     | content    |
     | Title      |
-    | Add dishes |
+    | add dishes |
     | Pizza      |
     | Salad      |
     | Olives     |
