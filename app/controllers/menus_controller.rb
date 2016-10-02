@@ -24,14 +24,17 @@ class MenusController < ApplicationController
 
   def update
     @menu = Menu.find(params[:id])
-    params[:menu][:dish_ids].each do |dish|
-      @menu.dish_ids << dish
-    end
+    @menu.update(menu_params)
+    # params[:menu][:dish_ids].each do |dish|
+    #   @menu.dish_ids << dish
+    #   @menu.save
+    # end
+    # binding.pry
     render :show
   end
 
   private
   def menu_params
-    params.require(:menu).permit(:title, {menu_ids: []})
+    params.require(:menu).permit(:title, {dish_ids: []})
   end
 end
