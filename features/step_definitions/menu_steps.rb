@@ -16,3 +16,8 @@ Given(/^the following menus exist:$/) do |table|
     FactoryGirl.create(:menu, title: menu[:title])
   end
 end
+
+Given(/^I am on the edit menu page for "([^"]*)"$/) do |menu_name|
+  @menu = Menu.find_by(title: menu_name)
+  visit edit_menu_path(@menu)
+end

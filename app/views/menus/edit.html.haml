@@ -1,0 +1,9 @@
+.row
+  .column-md-12
+    %h1 Edit menu: #{@menu.title}
+    = form_for @menu, action: :update do |f|
+      = f.label :title, 'Edit Title'
+      %br
+      = f.text_field :title, id: 'title'
+      %br
+      = f.submit 'Update', id: 'create'
