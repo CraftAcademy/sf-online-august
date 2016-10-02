@@ -21,3 +21,17 @@ Given(/^I am on the edit menu page for "([^"]*)"$/) do |menu_name|
   @menu = Menu.find_by(title: menu_name)
   visit edit_menu_path(@menu)
 end
+
+Given(/^I add a dish to the "([^"]*)" menu$/) do |menu|
+  menu_page = Menu.find_by(title: menu)
+  visit(edit_menu_path(menu_page))
+  steps %Q{
+    When I check the "Pizza" box
+    And I click the "Update" button
+  }
+end
+
+Given(/^I am on the menu page for "([^"]*)"$/) do |menu_name|
+  menu_page = Menu.find_by(title: menu_name)
+  visit(menu_path(menu_page))
+end

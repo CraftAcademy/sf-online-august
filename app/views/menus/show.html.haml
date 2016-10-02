@@ -4,6 +4,5 @@
   Dishes:
   %br/
   - @menu.dishes.each do |dish|
-    #{dish.dish_name},
-    = dish.dish_price
+    = link_to dish.dish_name, dish
     %br/
