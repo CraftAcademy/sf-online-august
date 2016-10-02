@@ -19,7 +19,7 @@ class MenusController < ApplicationController
 
   def edit
     @menu = Menu.find(params[:id])
-    @dishes = @menu.dishes
+    @dishes = Dish.all #this needs to be restricted to only dishes created by the restaurant later on
   end
 
   private
