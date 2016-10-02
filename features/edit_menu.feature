@@ -7,6 +7,7 @@ Scenario: I edit my menu
     | dish_name | dish_desc       | dish_price |
     | Pizza     | Delicious pizza | 7000       |
     | Salad     | Leafy           | 1500       |
+    | Olives    | Salty           | 900        |
   And the following menus exist:
     | title |
     | Lunch |
@@ -17,7 +18,10 @@ Scenario: I edit my menu
     | Add dishes |
     | Pizza      |
     | Salad      |
+    | Olives     |
   When I check the "Pizza" box
+  And I check the "Olives" box
   And I click the "Update" button
   Then I should be on the menu page for "Lunch"
   And I should see "Pizza"
+  And I should not see "Salad"
