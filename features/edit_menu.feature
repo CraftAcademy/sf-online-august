@@ -11,5 +11,9 @@ Scenario: I edit my menu
     | title |
     | Lunch |
   And I am on the edit menu page for "Lunch"
-  Then I should see "Title"
-  And I should see "Dishes"
+  Then I should see:
+    | content    |
+    | Title      |
+    | Add dishes |
+    | Pizza      |
+    | Salad      |
