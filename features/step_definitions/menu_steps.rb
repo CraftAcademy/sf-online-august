@@ -6,7 +6,7 @@ Given(/^I create a menu "([^"]*)"$/) do |menu_name|
   }
 end
 
-Then(/^I should be on the "([^"]*)" page for "([^"]*)"$/) do |page, title|
+Then(/^I should be on the menu page for "([^"]*)"$/) do |title|
   menu_id = Menu.find_by(title: title)
   expect(current_path).to eq menu_path(menu_id)
 end

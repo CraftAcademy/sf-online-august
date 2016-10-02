@@ -22,6 +22,14 @@ class MenusController < ApplicationController
     @dishes = Dish.all #this needs to be restricted to only dishes created by the restaurant later on
   end
 
+  def update
+    @menu = Menu.find(params[:id])
+    params[:menu][:dish_ids].each do |dish|
+      @menu.dish_ids << dish
+    end
+    render :show
+  end
+
   private
   def menu_params
     params.require(:menu).permit(:title, {menu_ids: []})
