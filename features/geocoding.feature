@@ -1,6 +1,4 @@
-Feature: As a restaurant Owner
-  in order to be found
-  my restaurant need to be placed on a map.
+Feature: Geocoding restaurants
 
 Background:
   Given the following restaurant exist
@@ -11,7 +9,6 @@ Scenario: Show map on index page
   When I am on the "index" page
   Then I should see a map-div
 
-Scenario: Geolocate restaurant
+Scenario: Geocode restaurant
   Given I am on restaurant page for "McD"
   Then "McD" should have a latitude
-  
