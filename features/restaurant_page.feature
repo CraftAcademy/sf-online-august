@@ -29,3 +29,9 @@ Scenario: I attempt to create a restaurant with no address
     | Town        | Göteborg             |
   And I click the "Create" button
   And I should see "Street can't be blank"
+
+Scenario: I attempt to access new restaurant page without being logged in
+  Given I am not logged in
+  When I am on the "create restaurant" page
+  Then I should be on the "index" page
+  Then I should see "You are not authorized to access this page"

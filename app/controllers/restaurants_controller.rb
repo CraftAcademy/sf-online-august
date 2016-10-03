@@ -1,4 +1,6 @@
 class RestaurantsController < ApplicationController
+  load_and_authorize_resource # potentially refactor this into ApplicationController
+
   def index
   end
 
@@ -7,7 +9,6 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-  #  @restaurant = current_user.restaurant.new(restaurant_params)
     @restaurant = Restaurant.new(restaurant_params.merge!({user: current_user}))
     if @restaurant.save
       render :show
@@ -18,7 +19,6 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-#   @restaurant = Restaurant.find(params[:id])
   end
 
   private
