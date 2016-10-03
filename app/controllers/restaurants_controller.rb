@@ -9,8 +9,12 @@ class RestaurantsController < ApplicationController
   def create
   #  @restaurant = current_user.restaurant.new(restaurant_params)
     @restaurant = Restaurant.new(restaurant_params.merge!({user: current_user}))
-    @restaurant.save
-    render :show
+    if @restaurant.save
+      render :show
+    else
+      flash[:alert] = @restaurant.errors.full_messages.first
+      render :new
+    end
   end
 
   def show
