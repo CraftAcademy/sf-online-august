@@ -9,7 +9,7 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.new(restaurant_params.merge!({user: current_user}))
+    @restaurant = Restaurant.new(restaurant_params.merge({user: current_user}))
     if @restaurant.save
       render :show
     else
