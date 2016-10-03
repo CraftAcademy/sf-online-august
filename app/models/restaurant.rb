@@ -4,8 +4,7 @@ class Restaurant < ApplicationRecord
   after_validation :geocode
   validates_presence_of :user, :name, :street, :zipcode, :town
 
-  private
   def full_address
-    [street, zipcode, town, 'Sweden'].compact.join(', ')
+    [street, zipcode, town].join(', ')
   end
 end

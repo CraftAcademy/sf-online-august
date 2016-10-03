@@ -13,17 +13,17 @@ Warden.test_mode!
 World Warden::Test::Helpers
 After { Warden.test_reset! }
 
-Geocoder.configure(lookup: :test)
-
-Geocoder::Lookup::Test.set_default_stub(
-  [
-    {
-      'latitude'     => 57.7089,
-      'longitude'    => 11.9746,
-      'address'      => 'Gothenburg, Sweden',
-      'state'        => 'Gothenburg',
-      'country'      => 'Sweden',
-      'country_code' => 'SE'
-    }
-  ]
-)
+# Geocoder.configure(lookup: :test)
+#
+# Geocoder::Lookup::Test.set_default_stub(
+#   [
+#     {
+#       'latitude'     => 57.7089,
+#       'longitude'    => 11.9746,
+#       'address'      => 'Gothenburg, Sweden',
+#       'state'        => 'Gothenburg',
+#       'country'      => 'Sweden',
+#       'country_code' => 'SE'
+#     }
+#   ]
+# )

@@ -27,5 +27,11 @@ RSpec.describe Restaurant, type: :model do
     end
   end
 
+  describe 'geocoding' do
+    it 'should generate a full address from Factory' do
+      expect(create(:restaurant).full_address).to eq "Fjällgatan 3, 41463, Gothenburg"
+    end
+  end
+
 
 end
