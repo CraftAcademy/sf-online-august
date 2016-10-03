@@ -13,6 +13,7 @@ RSpec.describe Restaurant, type: :model do
   end
 
   describe 'validations' do
+    it { is_expected.to validate_presence_of :name}
     it { is_expected.to validate_presence_of :street}
     it { is_expected.to validate_presence_of :zipcode}
     it { is_expected.to validate_presence_of :town}
