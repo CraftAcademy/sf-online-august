@@ -11,7 +11,7 @@ Background:
   And the following menus exist:
     | title |
     | Lunch |
-  And I add a dish to the "Lunch" menu
+  And I add "Pizza" to the "Lunch" menu
 
 Scenario: I view the menu
   Given I am on the menu page for "Lunch"
