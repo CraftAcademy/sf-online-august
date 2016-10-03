@@ -12,7 +12,6 @@ end
 Then(/^"([^"]*)" should have a latitude$/) do |name|
   restaurant = Restaurant.find_by(name: name)
   expect(restaurant.latitude).not_to be nil
-  binding.pry
 end
 
 Then(/^I should see a map-div$/) do
