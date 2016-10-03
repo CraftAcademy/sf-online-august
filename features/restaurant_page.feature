@@ -34,4 +34,10 @@ Scenario: I attempt to access new restaurant page without being logged in
   Given I am not logged in
   When I am on the "create restaurant" page
   Then I should be on the "index" page
-  Then I should see "You are not authorized to access this page"
+  And I should see "You are not authorized to access this page"
+
+Scenario: I try to create a second restaurant
+  And I already have a restaurant
+  And I am on the "create restaurant" page
+  Then I should be on the "index" page
+  And I should see "You already have a restaurant, how many do you need?"
