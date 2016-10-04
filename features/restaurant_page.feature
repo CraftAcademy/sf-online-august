@@ -65,3 +65,15 @@ Scenario: My menu doesn't show up on your restaurant
   When I create a menu "Super Duper Menu"
   And I visit the restaurant page for "Kiki"
   Then I should not see "Super Duper Menu"
+
+Scenario: I can't create a menu if I'm not logged in as a restaurant owner
+  Given I am not logged in
+  When I am on the "add menu" page
+  Then I should be on the "index" page
+  And I should see "You are not authorized to access this page"
+
+Scenario: I can't create a menu if I don't have a restaurant
+  Given I haven't set up my restaurant
+  When I am on the "add menu" page
+  Then I should be on the "create restaurant" page
+  And I should see "Please create your restaurant before continuing"

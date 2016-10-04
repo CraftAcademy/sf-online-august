@@ -7,7 +7,12 @@ class MenusController < ApplicationController
   end
 
   def new
-    @menu = Menu.new
+    if current_user && current_user.role == 'owner' && !current_user.restaurant.nil?
+      @menu = Menu.new
+    else
+      flash[:alert] = 'Please create your restaurant before continuing'
+      redirect_to new_restaurant_path
+    end
   end
 
   def show

@@ -43,3 +43,7 @@ When(/^I visit the restaurant page for "([^"]*)"$/) do |name|
   restaurant = Restaurant.find_by(user: owner)
   visit restaurant_path(restaurant)
 end
+
+Given(/^I haven't set up my restaurant$/) do
+  expect(Restaurant.first).to eq nil
+end
