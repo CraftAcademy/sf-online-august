@@ -1,4 +1,6 @@
 language: ruby
+notifications:
+  email: false
 rvm:
 - 2.3.0
 before_script:
@@ -10,10 +12,9 @@ services:
 - postgresql
 deploy:
   provider: heroku
+  api_key:
+    secure: Ug0x11gIJ0s6/27IfMpolFyOpo7gn2FuyfS52o2VgymeLsJicbrt3Uz0QEHiWZozjjFcyXQ0YHYsmwDwZAhHP8UkjHMb0RSrpgTxAZpPABVVqh4wZ/xZhu91DtI2Aa86P4XOm7kSO7X6yV1HwWXdpKIctt1rFO6OEA9tF26N3I8MznNFfZ2YQ8yiFwS6rjfL0q9qWfZ9v1+trZKFwRviXkARKsUlpwdVl+p095ChfXoDTvfsP+9ClL5rdGt7E3b3U0DV1DAU1vvlFZwSSUUy6PYUHfZ3IFUfEwIQMnNFy0o5x/fZ2mP8zIp0jDd9CJ2wGcvF3YQlRoexbQ8IvXi6E0tbgY9R38XuExP1K49AYn4E+5S5zvf2+nP/Z2Iw7w0kwQjQBWL3gN8mwwIfBnXNCzo40kzhnqFf1NPNTGYVUTR/9CCuj/FAA6TtLDESo9DUe3v22BPuZErR9EFhZXprfA6OtLc0pnJIlTzBio9ys+GadAr5EqUbKnLvLu1t1pR+pFhD1VeD2P1hQdc7li4esHjbcjuQHwMCxo7fn4pLh4dcJVyIWTtOfXPscwLZh7y6QKue9LMJRXhIdxafWu2Xt4QUk+tENTzkyEayTeumC93MZJ/zzxghnUZtIP0hBi8Jhr8qZoH4TO107wghxQMSJOg3evOdE5BqkpPU2pLYS/c=
   app: slow-food-august
   on:
-    branch: deployment
-  run:
-  - rake db:migrate
-  api_key:
-    secure: OLq7hZRZ0h1AOvb4WFvB0jrjd4xS5HzQ1gef53z0nWwhdCFG/JuBrrcT2FbgXlQ4yoJHDVbjfDSSVtueiRz57U8K/ko0eZQI2wfBQ0id8of0eCfLKIbQx970hXd9uXMBX7SHNdNyBCMIkyE6bi6Qv9yD5lSbqdULDP1czkmUGaDo/ik+NDp7TVQlDaJIVVy19svUQaIl9yutAwOZ88VGsmsKpmQfeBLE8apLt0MO+XkaUxESTUQoqiJSu/e0FLw4spyK4QQ20/lMBdFkzUjqtLLQyC+JSrifhyPoL5U9dVMmDEWt02ke2ZzNN07FjaN72cVVL9cF/8OmmD7f7ppXpGH0XMi35aej3s7MmVR5BOMPfd0Q9VswaP9XA8hSn9V/e3VMZVMYSEZo9Af1AT5s+YGuLq94qT9cP12QW5oWkOa8/GqB9gxo24rnrbPbhcxYXE0fCjGb9SSGxqnX3/Hf8WVHCT+aF83nZE2MEMKhfw/5grOINfB+Lg61USedChEOCKlhegg5cNFt036E1Y9TSWxJH+Sp+HZ1GgWbQe4QlGoTEhh416G2l4P2fJ5+zpY7MRbS/gELZq3Zy6owFnHNZ+UaAXWFZPDER2j4IWb2IM7FZ4xlVzGQ2oROcxa14yl/D3slmWDCYP/MvM6kG+ozUvLHCXTv+C8a4Dtw0nr/iXg=
+    repo: CraftAcademy/sf-online-august
+    branch: develop
