@@ -4,6 +4,7 @@ Feature: As a restaurant Owner
 
   Background:
     Given I am logged in as a restaurant owner
+    And I already have a restaurant
 
   Scenario: Viewing the Add Menu page
     Given I am on the "add menu" page
