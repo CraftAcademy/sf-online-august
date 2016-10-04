@@ -77,3 +77,9 @@ Scenario: I can't create a menu if I don't have a restaurant
   When I am on the "add menu" page
   Then I should be on the "create restaurant" page
   And I should see "Please create your restaurant before continuing"
+
+Scenario: I can't create a dish if I don't have a restaurant
+  Given I haven't set up my restaurant
+  When I am on the "Create Dish" page
+  Then I should be on the "create restaurant" page
+  And I should see "Please create your restaurant before continuing"
