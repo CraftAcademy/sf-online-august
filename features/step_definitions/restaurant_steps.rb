@@ -29,3 +29,7 @@ end
 Given(/^I try to visit the dish page for a dish that doesn't exist$/) do
   visit dish_path(99999)
 end
+
+Given(/^I try to visit the menu page for a menu that doesn't exist$/) do
+  visit menu_path(999999)
+end

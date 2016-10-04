@@ -14,6 +14,9 @@ class ApplicationController < ActionController::Base
     elsif exception.message == "Couldn't find Dish with 'id'=#{params[:id]}"
       flash[:alert] = 'Dish not found'
       redirect_to request.referer ? :back : root_url
+    elsif exception.message == "Couldn't find Menu with 'id'=#{params[:id]}"
+      flash[:alert] = 'Menu not found'
+      redirect_to request.referer ? :back : root_url
     else
       raise StandardError, exception.message, exception.backtrace
     end
