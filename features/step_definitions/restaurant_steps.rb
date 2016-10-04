@@ -26,3 +26,20 @@ When(/^I am on my restaurant page$/) do
   restaurant = Restaurant.first
   visit restaurant_path(restaurant)
 end
+
+Given(/^the following owners exist:$/) do |table|
+  table.hashes.each do |hash|
+    FactoryGirl.create(:user, hash.merge({role: 'owner'}))
+  end
+end
+
+Given(/^"([^"]*)" has a restaurant$/) do |name|
+  owner = User.find_by(name: name)
+  FactoryGirl.create(:restaurant, user: owner)
+end
+
+When(/^I visit the restaurant page for "([^"]*)"$/) do |name|
+  owner = User.find_by(name: name)
+  restaurant = Restaurant.find_by(user: owner)
+  visit restaurant_path(restaurant)
+end

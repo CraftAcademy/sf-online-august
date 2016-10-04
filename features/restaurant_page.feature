@@ -49,3 +49,13 @@ Scenario: I create a menu for my restaurant
   And I click the "Create" button
   When I am on my restaurant page
   Then I should see "Lunch Menu"
+
+Scenario: My menu doesn't show up on your restaurant
+  Given the following owners exist:
+    | name | email          |
+    | Kiki | kiki@owner.com |
+  And "Kiki" has a restaurant
+  And I already have a restaurant
+  When I create a menu "Super Duper Menu"
+  And I visit the restaurant page for "Kiki"
+  Then I should not see "Super Duper Menu"
