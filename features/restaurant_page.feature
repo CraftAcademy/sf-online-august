@@ -41,3 +41,11 @@ Scenario: I try to create a second restaurant
   And I am on the "create restaurant" page
   Then I should be on the "index" page
   And I should see "You already have a restaurant, how many do you need?"
+
+Scenario: I create a menu for my restaurant
+  Given I already have a restaurant
+  And I am on the "add menu" page
+  When I fill in "title" with "Lunch Menu"
+  And I click the "Create" button
+  When I am on my restaurant page
+  Then I should see "Lunch Menu"

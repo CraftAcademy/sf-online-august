@@ -21,3 +21,8 @@ Given(/^I already have a restaurant$/) do
     And I click the "Create" button
   }
 end
+
+When(/^I am on my restaurant page$/) do
+  restaurant = Restaurant.first
+  visit restaurant_path(restaurant)
+end
