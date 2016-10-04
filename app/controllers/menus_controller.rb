@@ -14,7 +14,8 @@ class MenusController < ApplicationController
   end
 
   def create
-    @menu = Menu.new(menu_params)
+    restaurant = Restaurant.find_by(user: current_user)
+    @menu = Menu.new(menu_params.merge({restaurant: restaurant}))
     if @menu.save
       flash[:notice] = 'Successfully added menu'
       render :show
