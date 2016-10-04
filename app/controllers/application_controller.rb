@@ -7,6 +7,15 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, alert: exception.message
   end
 
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    if exception.message == "Couldn't find Restaurant with 'id'=#{params[:id]}"
+      flash[:alert] = 'Restaurant not found'
+      redirect_to request.referer ? :back : root_url
+    else
+      raise StandardError, exception.message, exception.backtrace
+    end
+  end
+
   private
   def store_current_location
     store_location_for(:user, request.url)

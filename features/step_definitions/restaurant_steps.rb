@@ -21,3 +21,7 @@ Given(/^I already have a restaurant$/) do
     And I click the "Create" button
   }
 end
+
+Given(/^I try to visit the restaurant page for a restaurant that doesn't exist$/) do
+  visit restaurant_path(99999)
+end
