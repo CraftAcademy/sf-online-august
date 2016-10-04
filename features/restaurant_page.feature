@@ -55,6 +55,8 @@ Scenario: I create two menus for my restaurant
     | content     |
     | Lunch Menu  |
     | Dinner Menu |
+  When I click the link "Dinner Menu"
+  Then I should be on the menu page for "Dinner Menu"
 
 Scenario: My menu doesn't show up on your restaurant
   Given the following owners exist:
