@@ -8,14 +8,9 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
-    if exception.message == "Couldn't find Restaurant with 'id'=#{params[:id]}"
-      flash[:alert] = 'Restaurant not found'
-      redirect_to request.referer ? :back : root_url
-    elsif exception.message == "Couldn't find Dish with 'id'=#{params[:id]}"
-      flash[:alert] = 'Dish not found'
-      redirect_to request.referer ? :back : root_url
-    elsif exception.message == "Couldn't find Menu with 'id'=#{params[:id]}"
-      flash[:alert] = 'Menu not found'
+    item = params[:controller].singularize.capitalize
+    if exception.message == "Couldn't find #{item} with 'id'=#{params[:id]}"
+      flash[:alert] = item + ' not found'
       redirect_to request.referer ? :back : root_url
     else
       raise StandardError, exception.message, exception.backtrace
