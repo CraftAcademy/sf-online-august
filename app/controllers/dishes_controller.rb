@@ -4,7 +4,7 @@ class DishesController < ApplicationController
   def new
     if current_user && current_user.role == 'owner' && !current_user.restaurant.nil?
       @dish = Dish.new
-      @menus = Menu.find_by(user: current_user)
+      @menus = Menu.where(restaurant: current_user.restaurant)
     else
       flash[:alert] = 'Please create your restaurant before continuing'
       redirect_to new_restaurant_path

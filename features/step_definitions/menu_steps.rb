@@ -16,7 +16,7 @@ Given(/^I have the following menus:$/) do |table|
   table.hashes.each do |menu|
     FactoryGirl.create(:menu, title: menu[:title], restaurant: owner.restaurant)
   end
-  binding.pry
+
 end
 
 Given(/^I am on the edit menu page for "([^"]*)"$/) do |menu_name|

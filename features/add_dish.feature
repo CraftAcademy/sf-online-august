@@ -4,6 +4,7 @@ Feature: As a restaurant Owner
 
 Background:
   Given I am logged in as a restaurant owner
+  And I already have a restaurant
   And I have the following menus:
     | title  |
     | Lunch  |
@@ -29,8 +30,8 @@ Scenario: I can only add dishes to my own menus
   Given the following owners exist:
     | name | email          |
     | Kiki | kiki@owner.com |
+  And "Kiki" has a restaurant
   And "Kiki" has a menu "Gross Menu"
-  And I already have a restaurant
   When I am on the "Create Dish" page
   Then I should see:
     | content |
