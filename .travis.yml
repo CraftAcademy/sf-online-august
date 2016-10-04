@@ -12,7 +12,7 @@ deploy:
   provider: heroku
   app: slow-food-august
   on:
-    branch: develop
+    branch: deployment
   run:
   - rake db:migrate
   api_key:
