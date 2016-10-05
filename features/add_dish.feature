@@ -38,3 +38,4 @@ Scenario: I can only add dishes to my own menus
     | Menu    |
     | Lunch   |
   And I should not see "Gross Menu"
+  And I should not see "Add to cart"
