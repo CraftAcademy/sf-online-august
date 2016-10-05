@@ -18,3 +18,8 @@ Given(/^I have the following dishes:$/) do |table|
     FactoryGirl.create(:dish, dish_name: dish[:name], restaurant: restaurant)
   end
 end
+
+Given(/^"([^"]*)" has a dish "([^"]*)"$/) do |name, dish_name|
+  restaurant = User.find_by(name: name).restaurant
+  FactoryGirl.create(:dish, dish_name: dish_name, restaurant: restaurant)
+end

@@ -28,7 +28,7 @@ class MenusController < ApplicationController
   end
 
   def edit
-    @dishes = Dish.all #this needs to be restricted to only dishes created by the restaurant later on
+    @dishes = current_user.restaurant.dishes
   end
 
   def update
