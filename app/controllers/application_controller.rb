@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, alert: exception.message
   end
 
+  def owner_has_restaurant?
+    Restaurant.exists?(user: current_user)
+  end
+
   private
   def store_current_location
     store_location_for(:user, request.url)

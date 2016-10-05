@@ -2,7 +2,7 @@ class DishesController < ApplicationController
   load_and_authorize_resource
 
   def new
-    if (can? :manage, Dish) && Restaurant.exists?(user: current_user)
+    if (can? :manage, Dish) && owner_has_restaurant?
       @dish = Dish.new
       @menus = Menu.where(restaurant: current_user.restaurant)
     else
