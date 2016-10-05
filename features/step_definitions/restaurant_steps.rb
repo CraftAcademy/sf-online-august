@@ -33,3 +33,44 @@ end
 Given(/^I try to visit the menu page for a menu that doesn't exist$/) do
   visit menu_path(999999)
 end
+
+When(/^I am on my restaurant page$/) do
+  restaurant = Restaurant.first
+  visit restaurant_path(restaurant)
+end
+
+Given(/^the following owners exist:$/) do |table|
+  table.hashes.each do |hash|
+    FactoryGirl.create(:user, hash.merge({role: 'owner'}))
+  end
+end
+
+Given(/^"([^"]*)" has a restaurant$/) do |name|
+  owner = User.find_by(name: name)
+  FactoryGirl.create(:restaurant, user: owner)
+end
+
+When(/^I visit the restaurant page for "([^"]*)"$/) do |name|
+  owner = User.find_by(name: name)
+  restaurant = Restaurant.find_by(user: owner)
+  visit restaurant_path(restaurant)
+end
+
+Given(/^I haven't set up my restaurant$/) do
+  expect(Restaurant.first).to eq nil
+end
+
+Given(/^the following restaurants exists$/) do |table|
+  table.hashes.each do |hash|
+    user = User.find_by(name: hash[:owner])
+    FactoryGirl.create(:restaurant, name: hash[:name],
+                                    description: hash[:description],
+                                    town: hash[:town],
+                                    user: user)
+  end
+end
+
+private
+def set_user(name)
+  @user = User.find_by(name: name)
+end
