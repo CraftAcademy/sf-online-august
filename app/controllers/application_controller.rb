@@ -12,8 +12,6 @@ class ApplicationController < ActionController::Base
     if exception.message == "Couldn't find #{item} with 'id'=#{params[:id]}"
       flash[:alert] = item + ' not found'
       redirect_to request.referer ? :back : root_url
-    else
-      raise StandardError, exception.message, exception.backtrace
     end
   end
 
