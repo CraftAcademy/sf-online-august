@@ -33,17 +33,11 @@ Given(/^I am on the restaurant page for "([^"]*)"$/) do |name|
 end
 
 Then(/^I should be on the edit restaurant page for "([^"]*)"$/) do |restaurant|
-  restaurant_id = Restaurant.find_by(name: restaurant)
-  expect(current_path).to eq edit_restaurant_path(id: restaurant_id)
+  restaurant = Restaurant.find_by(name: restaurant)
+  expect(current_path).to eq edit_restaurant_path(id: restaurant)
 end
 
 Then(/^I should be on the show page for "([^"]*)"$/) do |restaurant|
-  restaurant_id = Restaurant.find_by(name: restaurant)
-  expect(current_path).to eq restaurant_path(id: restaurant_id)
+  restaurant = Restaurant.find_by(name: restaurant)
+  expect(current_path).to eq restaurant_path(id: restaurant)
 end
-
-
-#Then(/^I should be on the "([^"]*)" page for "([^"]*)"$/) do |page, restaurant|
-#  restaurant_id = Restaurant.find_by(name: restaurant)
-#  expect(current_path).to eq edit_restaurant_path(id: restaurant_id)
-#end
