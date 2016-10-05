@@ -9,7 +9,7 @@ class MenusController < ApplicationController
 
   def new
     @menu = Menu.new
-    @dishes = Dish.where(restaurant: current_user.restaurant)
+    @dishes = current_user.restaurant.dishes
   end
 
   def show
