@@ -9,7 +9,6 @@ class DishesController < ApplicationController
 
   def create
     @dish = current_user.restaurant.dishes.create(dish_params)
-    # @dish = Dish.new(dish_params)
     if @dish.save
       render :show
     else
