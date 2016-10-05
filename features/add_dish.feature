@@ -39,3 +39,9 @@ Scenario: I can only add dishes to my own menus
     | Lunch   |
   And I should not see "Gross Menu"
   And I should not see "Add to cart"
+
+Scenario: I attempt to access the create dish page when not logged in
+  Given I am not logged in
+  When I am on the "Create Dish" page
+  Then I should be on the "index" page
+  And I should see "You are not authorized to access this page"
