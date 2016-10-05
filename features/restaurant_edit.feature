@@ -14,7 +14,7 @@ Feature: As a restaurant Owner
     Then I should be on the show page for "tacos"
     And I should see "tacos"
 
-  Scenario: I fuck up the edit
+  Scenario: I messed up the edit
     Given I am on the restaurant page for "Awesome"
     And I click the link "Edit"
     And I fill in "Name" with ""
