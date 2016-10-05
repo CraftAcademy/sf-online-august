@@ -17,7 +17,7 @@
         = dish.item.dish_name
       %p
         Total:
-        = @cart.total
+        = @cart.total.to_i
       - if current_user
         = link_to 'Pay Now', checkout_path(@cart), method: :post
       - else
