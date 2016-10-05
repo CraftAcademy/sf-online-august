@@ -7,20 +7,17 @@ Background:
     | name |
     | Anna |
   And "Anna" has a restaurant
-
-Scenario: Adding dish to cart
-  Given the following dish exist
+  And the following dish exist
   | dish_name | dish_desc       | dish_price |
   | Pizza     | Delicious pizza | 7000       |
   | Salad     | Leafy           | 200        |
 
 Scenario: Adding dish to cart
-  And I am on the "dish" page for "Pizza"
+  Given I am on the dish page for "Pizza"
   When I click the link "Add to cart"
   Then I should see "Delicious pizza"
   And I click the link "Show cart"
   Then I should be on the "cart" page
-  And I should see "700000"
   And I should see "Pizza"
 
 Scenario: Can only checkout as registered user
@@ -42,7 +39,6 @@ Scenario: Checking out as registered user
     | content                  |
     | Your food is on its way! |
     | Pizza                    |
-    | 700000                   |
     | Fjällgatan 3             |
 
 Scenario: I view the cart before I add dishes
@@ -69,9 +65,9 @@ Scenario: My cart clears after checkout
   Then I should see "You have no dishes in your cart."
 
 Scenario: My cart gives me an appropriate total
-  Given I am on the "dish" page for "Pizza"
+  Given I am on the dish page for "Pizza"
   And I click the link "Add to cart"
-  And I am on the "dish" page for "Salad"
+  And I am on the dish page for "Salad"
   And I click the link "Add to cart"
   When I am on the "cart" page
   Then I should see "Total: 7200"
