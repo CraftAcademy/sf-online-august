@@ -17,8 +17,8 @@ class MenusController < ApplicationController
 
   def create
     restaurant = Restaurant.find_by(user: current_user)
-    menu = restaurant.menus.new(menu_params)
-    if menu.save
+    @menu = restaurant.menus.new(menu_params)
+    if @menu.save
       flash[:notice] = 'Successfully added menu'
       render :show
     else
