@@ -1,5 +1,6 @@
 class MenusController < ApplicationController
   before_action :find_menu_from_params, only: [:show, :edit, :update]
+  before_action :owner_has_restaurant?, only: :new
 
   load_and_authorize_resource
 
@@ -7,7 +8,7 @@ class MenusController < ApplicationController
   end
 
   def new
-    if (can? :manage, Menu) && owner_has_restaurant?
+    if can? :manage, Menu
       @menu = Menu.new
     else
       flash[:alert] = 'Please create your restaurant before continuing'

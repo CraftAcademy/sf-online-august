@@ -8,7 +8,12 @@ class ApplicationController < ActionController::Base
   end
 
   def owner_has_restaurant?
-    Restaurant.exists?(user: current_user)
+    if Restaurant.exists?(user: current_user)
+      true
+    else
+      flash[:alert] = 'Please create your restaurant before continuing'
+      redirect_to new_restaurant_path
+    end
   end
 
   private

@@ -1,13 +1,11 @@
 class DishesController < ApplicationController
   load_and_authorize_resource
+  before_action :owner_has_restaurant?, only: :new
 
   def new
-    if (can? :manage, Dish) && owner_has_restaurant?
+    if can? :manage, Dish
       @dish = Dish.new
       @menus = Menu.where(restaurant: current_user.restaurant)
-    else
-      flash[:alert] = 'Please create your restaurant before continuing'
-      redirect_to new_restaurant_path
     end
   end
 
