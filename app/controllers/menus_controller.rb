@@ -8,12 +8,7 @@ class MenusController < ApplicationController
   end
 
   def new
-    if can? :manage, Menu
-      @menu = Menu.new
-    else
-      flash[:alert] = 'Please create your restaurant before continuing'
-      redirect_to new_restaurant_path
-    end
+    @menu = Menu.new
   end
 
   def show

@@ -3,10 +3,8 @@ class DishesController < ApplicationController
   before_action :owner_has_restaurant?, only: :new
 
   def new
-    if can? :manage, Dish
-      @dish = Dish.new
-      @menus = Menu.where(restaurant: current_user.restaurant)
-    end
+    @dish = Dish.new
+    @menus = Menu.where(restaurant: current_user.restaurant)
   end
 
   def create
