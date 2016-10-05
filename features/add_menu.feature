@@ -28,8 +28,7 @@ Feature: As a restaurant Owner
     And I fill in "title" with "Salty Menu"
     And I check the "Olives" box
     And I click the "create" button
-    Then I should be on the menu page for "Salty Menu"
-    And I should see "Olives"
+    And I should see "Dishes: Olives"
 
   Scenario: Viewing my menu
     Given I create a menu "Lunch"
