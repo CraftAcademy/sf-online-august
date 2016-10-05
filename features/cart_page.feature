@@ -2,10 +2,13 @@ Feature: As a Customer
   in order to place an order
   I need to be able to add dishes to my cart.
 
-Scenario: Adding dish to cart
+Background:
   Given the following dish exist
   | dish_name | dish_desc       | dish_price |
   | Pizza     | Delicious pizza | 7000       |
+  | Salad     | Leafy           | 200        |
+
+Scenario: Adding dish to cart
   And I am on the "dish" page for "Pizza"
   When I click the link "Add to cart"
   Then I should see "Delicious pizza"
@@ -58,3 +61,11 @@ Scenario: My cart clears after checkout
   And I check out
   When I am on the "cart" page
   Then I should see "You have no dishes in your cart."
+
+Scenario: My cart gives me an appropriate total
+  Given I am on the "dish" page for "Pizza"
+  And I click the link "Add to cart"
+  And I am on the "dish" page for "Salad"
+  And I click the link "Add to cart"
+  When I am on the "cart" page
+  Then I should see "Total: 7200"
