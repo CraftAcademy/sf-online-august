@@ -11,3 +11,10 @@ When(/^visit the "([^"]*)" menu page$/) do |menu_name|
   menu = Menu.find_by(title: menu_name)
   visit menu_path(menu)
 end
+
+Given(/^I have the following dishes:$/) do |table|
+  user = User.owners.first
+  table.hashes.each do |name|
+    user.dishes.create(title: name)
+  end
+end
