@@ -13,8 +13,8 @@ When(/^visit the "([^"]*)" menu page$/) do |menu_name|
 end
 
 Given(/^I have the following dishes:$/) do |table|
-  user = User.owners.first
-  table.hashes.each do |name|
-    user.dishes.create(title: name)
+  restaurant = Restaurant.first
+  table.hashes.each do |dish|
+    FactoryGirl.create(:dish, dish_name: dish[:name], restaurant: restaurant)
   end
 end
