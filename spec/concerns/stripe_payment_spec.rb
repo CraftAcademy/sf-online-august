@@ -6,9 +6,13 @@ describe 'StripePayment' do
     class FakeController < ApplicationController
       include StripePayment
     end
+    StripeMock.start
   end
 
-  after { Object.send :remove_const, :FakeController }
+  after do
+    Object.send :remove_const, :FakeController
+    StripeMock.stop
+  end
 
   let(:controller) { FakeController.new }
   let(:cart) { create(:shopping_cart)}

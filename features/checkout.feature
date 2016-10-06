@@ -16,8 +16,18 @@ Feature: As a restaurant owner
     When I click the "Pay with Card" stripe button
     And I fill in appropriate card details
     And I submit the stripe form
-    Then I should see "Your food is on its way!"
+    Then I should see:
+      | content                  |
+      | Your food is on its way! |
+      | Pizza                    |
     And my order should be registered in the system
+
+  Scenario: My cart clears after checkout
+    Given I register as a user with username "Amber" and email "amber@random.com"
+    And I check out
+    When I am on the "cart" page
+    Then I should see "You have no dishes in your cart."
+
 
   Scenario: I see the "register to pay" button if I'm not logged in
     Given I am on the "cart" page

@@ -6,7 +6,6 @@ After '@javascript' do
 end
 
 Before '@stripe' do
-  #let(:stripe_helper) { StripeMock.create_test_helper }
   StripeMock.start
 end
 

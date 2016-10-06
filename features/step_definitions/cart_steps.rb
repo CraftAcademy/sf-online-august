@@ -35,9 +35,15 @@ end
 
 Given(/^I check out$/) do
   steps %q{
-    When I am on the "cart" page
-    And I click the link "Pay Now"
-    Then I should see "Pizza"
+    And I am on the "cart" page
+    When I click the "Pay with Card" stripe button
+    And I fill in appropriate card details
+    And I submit the stripe form
+    Then I should see:
+      | content                  |
+      | Your food is on its way! |
+      | Pizza                    |
+    And my order should be registered in the system
   }
 end
 
