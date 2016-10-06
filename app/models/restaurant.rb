@@ -1,6 +1,6 @@
 class Restaurant < ApplicationRecord
 
-  CATEGORIES = ['Other', 'Pizza', 'Sushi', 'Italian', 'Thai', 'Fast Food', 'BBQ', 'French', 'Traditional', 'Vegan', 'Seafood', 'Texmex']
+  PERMITTED_CATEGORIES = ['Other', 'Pizza', 'Sushi', 'Italian', 'Thai', 'Fast Food', 'BBQ', 'French', 'Traditional', 'Vegan', 'Seafood', 'Texmex']
 
   belongs_to :user
   has_many :menus
@@ -8,7 +8,8 @@ class Restaurant < ApplicationRecord
   geocoded_by :full_address
   after_validation :geocode
   validates_presence_of :user, :name, :category, :street, :zipcode, :town
-  validates :category, inclusion: CATEGORIES
+  validates :category, inclusion: { in: PERMITTED_CATEGORIES,
+                                    message: '%{value} is not permitted'}
 
 
   def full_address

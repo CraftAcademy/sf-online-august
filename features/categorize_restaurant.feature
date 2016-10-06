@@ -23,5 +23,3 @@ Feature: As a restaurant Owner
     And I click the "Submit" button
     Then I should be on the restaurant page for "Awesome restaurant"
     And I should see "Other"
-    # Then I should be on the edit restaurant page for "Awesome restaurant"
-    # And I should see "Category can´t be blank"
