@@ -11,7 +11,7 @@ Feature: As a restaurant Owner
     And I click the link "Edit"
     When I fill in "Name" with "tacos"
     And I click the "Submit" button
-    Then I should be on the show page for "tacos"
+    Then I should be on the restaurant page for "tacos"
     And I should see "tacos"
 
   Scenario: I messed up the edit
@@ -20,6 +20,20 @@ Feature: As a restaurant Owner
     And I fill in "Name" with ""
     And I click the "Submit" button
     Then I should see "Name can't be blank"
+
+  Scenario: My geolocation gets updated when I update my address
+    Given I am on the restaurant page for "Awesome"
+    Then "Awesome" should have lat "57.7089" and long "11.9746"
+    And I click the link "Edit"
+    When I fill in:
+      | element     | content            |
+      | Street      | Blåsbackegatan 17  |
+      | Zipcode     | 30247              |
+      | Town        | Halmstad           |
+    And I click the "Submit" button
+    When I am on the restaurant page for "Awesome"
+    And I should see "Blåsbackegatan 17"
+    Then "Awesome" should have lat "56.6755" and long "12.8783"
 
   Scenario: I should be the only one who can edit my restaurant
     Given the following users exist
