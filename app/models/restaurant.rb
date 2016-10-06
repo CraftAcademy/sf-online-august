@@ -1,6 +1,6 @@
 class Restaurant < ApplicationRecord
 
-  PERMITTED_CATEGORIES = ['Other', 'Pizza', 'Sushi', 'Italian', 'Thai', 'Fast Food', 'BBQ', 'French', 'Traditional', 'Vegan', 'Seafood', 'Texmex']
+  PERMITTED_CATEGORIES = %w(Other Pizza Sushi Italian Thai FastFood BBQ French Traditional Vegan Seafood TexMex)
 
   belongs_to :user
   has_many :menus
@@ -16,3 +16,4 @@ class Restaurant < ApplicationRecord
     [street, zipcode, town].join(', ')
   end
 end
+
