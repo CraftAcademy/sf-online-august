@@ -25,7 +25,7 @@ class CartsController < ApplicationController
       flash[:notice] = 'Your food is on its way!'
       render :checkout
     else
-      redirect_to charges_path, alert: charge
+      redirect_to carts_path, alert: charge
     end
   end
 

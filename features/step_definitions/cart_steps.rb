@@ -47,6 +47,16 @@ Given(/^I check out$/) do
   }
 end
 
+And(/^I check out but something goes wrong$/) do
+  StripeMock.prepare_card_error(:card_declined)
+  steps %q{
+    And I am on the "cart" page
+    When I click the "Pay with Card" stripe button
+    And I fill in appropriate card details
+    And I submit the stripe form
+  }
+end
+
 
 And(/^I fill in appropriate card details$/) do
   sleep(0.1) until page.evaluate_script('$.active') == 0
