@@ -8,16 +8,14 @@ module StripePayment
     )
 
     charge = Stripe::Charge.create(
-        customer:      customer.id,
-        amount:        (cart.total * 100).to_i,
-        description:   'Best Slow Food order',
-        currency:      'sek'
+        customer: customer.id,
+        amount: (cart.total * 100).to_i,
+        description: 'Best Slow Food order',
+        currency: 'sek'
     )
     return charge
-    rescue Stripe::CardError => e
-     flash[:error] = e.message
-     redirect_to charges_path
-     flash[:alert] = 'Please try again'
+  rescue => e
+    [e.message, 'Please try again'].join(' ')
   end
 
   private
