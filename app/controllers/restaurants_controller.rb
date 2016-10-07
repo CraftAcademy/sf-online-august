@@ -37,6 +37,10 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  def dropdown
+    binding.pry
+  end
+
 
   private
 

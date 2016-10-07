@@ -1,0 +1,3 @@
+= form_tag('dropdown') do
+  = select_tag 'Category', options_for_select(Restaurant::PERMITTED_CATEGORIES), include_blank: 'Pick a Category'
+  = submit_tag 'Select'
