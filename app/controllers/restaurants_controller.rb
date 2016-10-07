@@ -6,7 +6,7 @@ class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.all
     gon.restaurants = @restaurants
-    @select_options = Restaurant::PERMITTED_CATEGORIES.dup.insert(0, 'All Restaurants')
+    create_dropdown_options
   end
 
   def new
