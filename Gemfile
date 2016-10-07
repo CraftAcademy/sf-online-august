@@ -17,6 +17,7 @@ gem 'geocoder'
 gem 'gmapsjs'
 gem 'gon'
 gem 'stripe-rails'
+gem 'colored' #colors in terminal Used in seeds.rb
 
 
 group :development, :test do
@@ -36,6 +37,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'stripe-ruby-mock', '~> 2.3.1', require: 'stripe_mock'
   gem 'faker'
+
 end
 
 group :development do
