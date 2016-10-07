@@ -6,7 +6,6 @@ class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.all
     gon.restaurants = @restaurants
-    create_dropdown_options
   end
 
   def new
