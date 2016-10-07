@@ -19,8 +19,8 @@ def create_restaurant(args = {})
   name = "#{prefix.sample} #{cat} #{suffix.sample}"
   description = args[:description] || Faker::Lorem.paragraph(2)
   address = args[:address] || [Faker::Address.street_address, Faker::Address.postcode, Faker::Address.city].join(', ')
-  lat = rand(57.3149..57.7090009).round(7)
-  lon = rand(11.4911..11.9900009).round(7)
+  lat = rand(57.69..57.7090009).round(7)
+  lon = rand(11.9691..11.9800009).round(7)
   rest = Restaurant.new(name: name,
                         description: description,
                         # zipcode: address,
