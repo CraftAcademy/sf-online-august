@@ -6,7 +6,7 @@ $(document).ready(function () {
         lng: 11.950632,
         zoom: 13,
         zoomControlOptions: {
-              position: google.maps.ControlPosition.LEFT_BOTTOM
+              position: google.maps.ControlPosition.RIGHT_BOTTOM
           },
         mapTypeControl: false,
         streetViewControl: false
