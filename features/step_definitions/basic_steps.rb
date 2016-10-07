@@ -48,10 +48,6 @@ Given(/^I am on the "([^"]*)" page for "([^"]*)"$/) do |page, dish|
   visit goto(page)
 end
 
-Then(/^I should be on the "([^"]*)" page for "([^"]*)"$/) do |page, dish|
-  @dish = Dish.find_by(dish_name: dish)
-  expect(current_path).to eq goto(page)
-end
 
 Then(/^show me the page$/) do
   save_and_open_page

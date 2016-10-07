@@ -20,8 +20,13 @@ Given(/^I have the following menus:$/) do |table|
 end
 
 Given(/^I am on the edit menu page for "([^"]*)"$/) do |menu_name|
-  @menu = Menu.find_by(title: menu_name)
-  visit edit_menu_path(@menu)
+  menu = Menu.find_by(title: menu_name)
+  visit edit_menu_path(menu)
+end
+
+Then(/^I should be on the edit menu page for "([^"]*)"$/) do |menu_name|
+  menu = Menu.find_by(title: menu_name)
+  expect(current_path).to eq edit_menu_path(menu)
 end
 
 Given(/^I add "([^"]*)" to the "([^"]*)" menu$/) do |dish, menu|
@@ -35,7 +40,7 @@ end
 
 Given(/^I am on the menu page for "([^"]*)"$/) do |menu_name|
   menu_page = Menu.find_by(title: menu_name)
-  visit(menu_path(menu_page))
+  visit menu_path(menu_page)
 end
 
 Given(/^"([^"]*)" has a menu "([^"]*)"$/) do |owner_name, menu_name|
@@ -50,4 +55,11 @@ end
 When(/^visit the "([^"]*)" menu page$/) do |menu_name|
   menu = Menu.find_by(title: menu_name)
   visit menu_path(menu)
+end
+
+Given(/^the following menus exits$/) do |table|
+  owner = User.owners.first
+  table.hashes.each do |menu|
+    FactoryGirl.create(:menu, title: menu[:title], restaurant: owner.restaurant)
+  end
 end
