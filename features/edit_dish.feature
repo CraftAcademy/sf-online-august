@@ -13,12 +13,15 @@ Feature: As a restaurant owner
       | Kebab     | Delicious kebab | 9000       |
 
   Scenario: Navigating to edit page
+    Given I log in as "Anna"
     Given I am on the dish page for "Kebab"
-    And I click the link "Edit"
+    And I click the link "Edit dish"
     Then I should be on the edit dish page for "Kebab"
 
   Scenario: Edit dish details
-    Given I am on the edit dish page for "Kebab"
+    Given I log in as "Anna"
+    And I am on the edit dish page for "Kebab"
+    Then show me the page
     And I fill in "Dish description" with "Kebab med sås"
     And I click the "Submit" button
     Then I should be on the dish page for "Kebab"
@@ -27,15 +30,17 @@ Feature: As a restaurant owner
     Given the following users exist
       | name  | email         | role  |
       | Bosse | bosse@food.se | owner |
-    And I log in as "Bosse"
-    And I visit the restaurant page for "Anna"
-    And I click the link "Edit"
-    Then I should see "You are not authorized to access this page."
+    When I log in as "Bosse"
+    And I am on the dish page for "Kebab"
+    Then I should not see "Edit dish"
+    When I somehow end up on edit dish page for "Kebab"
+    Then I should be on the "index" page
+    And I should see "You are not authorized to access this page."
 
   Scenario: Visitors can not edit dishes
     Given I am not logged in
     And I am on the dish page for "Kebab"
-    Then I should not see "Edit"
+    Then I should not see "Edit dish"
 
   Scenario: Customers can not edit dishes
     Given the following users exist
@@ -46,8 +51,9 @@ Feature: As a restaurant owner
     Then I should not see "Submit"
 
   Scenario: I mess up the edit for dish
-    Given I am on the dish page for "Kebab"
+    Given I log in as "Anna"
+    And I am on the dish page for "Kebab"
     And I click the link "Edit dish"
-    And I fill in "Dish Name" with ""
+    And I fill in "Name" with ""
     And I click the "Submit" button
     Then I should see "Name can't be blank"

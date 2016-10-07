@@ -10,7 +10,6 @@ class CartsController < ApplicationController
     flash[:notice] = "#{@dish.name} added to cart"
     redirect_back(fallback_location: restaurants_path)
   end
-
   def create
     link_user_and_cart(params)
     charge = StripePayment.perform_payment(params, @cart)

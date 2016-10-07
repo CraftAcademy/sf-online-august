@@ -1,7 +1,6 @@
 class DishesController < ApplicationController
-  before_action :find_dish_from_params, only: [:show, :edit, :update]
-
   load_and_authorize_resource
+  before_action :find_dish_from_params, only: [:show, :edit, :update]
   before_action :owner_has_restaurant?, only: :new
 
   def new

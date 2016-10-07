@@ -1,4 +1,7 @@
-.row
-  .column-md-12
-    %h1 Menu for X
-    %p Dish 1
+.h1-top
+  %h1
+    = "Menus for #{@menu.restaurant.name}"
+.container
+  .row
+    .col-md-8.col-xs-12
+      %p Dish 1
