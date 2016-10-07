@@ -27,5 +27,6 @@ Feature: As a Customer
     Then I should see "3" markers
 
   Scenario: Viewing restaurants on the map by category
-    When I select "Pizza" from "Category"
+    When I select "Pizza" from "category"
+    And I click the "Select" button
     Then I should see "2" markers

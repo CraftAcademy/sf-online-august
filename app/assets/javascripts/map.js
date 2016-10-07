@@ -9,13 +9,23 @@ $(document).ready(function () {
     addMarkers();
 });
 function addMarkers() {
-    if (gon.restaurants) {
+  if (gon.global.selected_restaurants) {
+    console.log("You're in selected restaurants");
+    gon.global.selected_restaurants.forEach(function (restaurant) {
+      console.log(restaurant.latitude + " " + restaurant.longitude);
+        map.addMarker({
+            lat: restaurant.latitude,
+            lng: restaurant.longitude
+        });
+    });
+  } else {
+        console.log("You're in all restaurants");
         gon.restaurants.forEach(function (restaurant) {
             map.addMarker({
-                lat: restaurant.lattitude,
+                lat: restaurant.latitude,
                 lng: restaurant.longitude
             });
-        })
+        });
     }
 }
 function performGeolocation() {
