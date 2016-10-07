@@ -1,4 +1,4 @@
-klasses = [Dish, Menu, Restaurant, User]
+klasses = [ShoppingCartItem, ShoppingCart, Dish, Menu, Restaurant, User]
 old_counts = klasses.map(&:count)
 should_prompt = old_counts.min  0
 
@@ -14,18 +14,18 @@ end
 
 def create_restaurant(args = {})
   suffix = %W(Place Parlor House Bar Food\ Court Pub)
-  prefix = %w(The Local Homemade)
-  cat = %w(Italian Thai Contemporary).sample
+  prefix = %w(The Local Homemade Fancy Skitbra)
+  cat = %w(Italian Thai Pizza Vegan).sample
   name = "#{prefix.sample} #{cat} #{suffix.sample}"
   description = args[:description] || Faker::Lorem.paragraph(2)
   address = args[:address] || [Faker::Address.street_address, Faker::Address.postcode, Faker::Address.city].join(', ')
-  lat = rand(57.7089001..57.7090009).round(7)
-  lon = rand(11.9800001..11.9900009).round(7)
+  lat = rand(57.3149..57.7090009).round(7)
+  lon = rand(11.4911..11.9900009).round(7)
   rest = Restaurant.new(name: name,
                         description: description,
-                        address: address,
-                        cuisine: cat,
-                        user: User.all.sample,
+                        # zipcode: address,
+                        category: cat,
+                        # user: User.all.sample,
                         latitude: lat,
                         longitude: lon)
   rest.save(validate: false)
@@ -35,7 +35,7 @@ def build_menus_with_dishes(menu_names)
   Restaurant.all.each do |restaurant|
     menu_names.each do |menu_name|
       #menu = Menu.create(name: menu_name, restaurant: restaurant)
-      menu = Menu.create(name: menu_name)
+      menu = Menu.create(title: menu_name, restaurant: Restaurant.all.sample)
 
       3.times { |i| add_dish(i + 1, menu, restaurant) }
     end
@@ -44,12 +44,14 @@ end
 
 def add_dish(number, menu, restaurant)
   price = rand(20..60)
-  prefix = restaurant.cuisine
+  prefix = restaurant.category
   Dish.create(name: "#{prefix} Dish #{number}",
               price: price,
-              description: "A great #{restaurant.cuisine} dish!",
-              menu: menu,
-              category: Dish::CATEGORIES.sample)
+              description: "A great #{restaurant.category} dish!",
+              # category: Dish::CATEGORIES.sample
+              menu_ids: menu.id,
+              restaurant_id: restaurant.id
+              )
 end
 
 puts '**************************************'.green
@@ -87,10 +89,10 @@ puts "There are currently #{Menu.count} Menus in the system".red
 puts "There are currently #{Dish.count} Dishes in the system".red
 
 if yes_no('Create System Users')
-  3.times do
+  10.times do
     name = Faker::Name.name
     User.create(email: Faker::Internet.safe_email(name),
-                password: 'password')
+                password: 'password', address: 'address', name: name)
   end
   puts "There are now #{User.count} Users in the system".yellow
 end
@@ -103,7 +105,7 @@ if yes_no('Create some Restaurants')
 end
 
 if yes_no('Create some random dishes')
-  build_menus_with_dishes(%W(Lunch À\ la\ carte))
+  build_menus_with_dishes(%W(Lunch À\ la\ carte Dinner))
   puts "There are now #{Menu.count} Menus in the system".yellow
   puts "There are now #{Dish.count} Dishes in the system".yellow
 end
