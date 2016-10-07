@@ -2,8 +2,9 @@ var map;
 $(document).ready(function () {
     map = new GMaps({
         div: '#map',
-        lat: 57.6914,
-        lng: 11.9731
+        lat: 57.690123,
+        lng: 11.950632,
+        zoom: 13
     });
     performGeolocation();
     addMarkers();
@@ -45,8 +46,8 @@ function performGeolocation() {
             }
         });
     } else {
-        latitude = 59.3293235;
-        longitude = 18.0685808;
+        latitude = 57.690123;
+        longitude = 11.950632;
         map.setCenter(latitude, longitude);
     }
 }

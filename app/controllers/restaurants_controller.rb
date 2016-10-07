@@ -6,10 +6,6 @@ class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.all
     gon.restaurants = @restaurants
-    # Trying to figure out a way to not have JS tripped up by a non-existent global variable!!
-    # if gon.global.selected_restaurants == nil
-    #   gon.global.selected_restaurants == 'none'
-    # end
   end
 
   def new

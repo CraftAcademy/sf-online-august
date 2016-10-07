@@ -24,11 +24,10 @@ Feature: As a Customer
   Scenario: Viewing the restaurants on the map
     Given my location is set to "57.7088700" lat and "11.9745600" lng
     And the map has been loaded
-    When I select "Anything" from "category"
-    And I click the "Select" button
+    When I select "BBQ" from "category"
+    And the map has been loaded
     Then I should see "3" markers
 
   Scenario: Viewing restaurants on the map by category
     When I select "Pizza" from "category"
-    And I click the "Select" button
     Then I should see "2" markers
