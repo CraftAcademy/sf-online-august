@@ -95,9 +95,8 @@ Given(/^the following restaurants exists$/) do |table|
   table.hashes.each do |hash|
     # user = User.find_by(name: hash[:owner])
     FactoryGirl.create(:restaurant, name: hash[:name],
-                                    description: hash[:description]
-                                    # town: hash[:town],
-                                    # user: user)
+                                    description: hash[:description],
+                                    category: hash[:category]
                                     )
   end
 end

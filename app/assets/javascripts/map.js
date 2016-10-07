@@ -2,8 +2,8 @@ var map;
 $(document).ready(function () {
     map = new GMaps({
         div: '#map',
-        lat: 57.7089,
-        lng: 11.9746
+        lat: 57.6914,
+        lng: 11.9731
     });
     performGeolocation();
     addMarkers();
@@ -18,8 +18,8 @@ function addMarkers() {
             lng: restaurant.longitude
         });
     });
-    gon.global.selected_restaurants = null;
-    console.log("Here's the selected_restaurants: " + gon.global.selected_restaurants)
+    gon.global.selected_restaurants = [];
+    console.log("Here's the selected_restaurants: " + map.markers.length)
   } else {
         console.log("You're in all restaurants");
         gon.restaurants.forEach(function (restaurant) {

@@ -29,4 +29,5 @@ Feature: As a Customer
   Scenario: Viewing restaurants on the map by category
     When I select "Pizza" from "category"
     And I click the "Select" button
+    Then show me the page
     Then I should see "2" markers
