@@ -5,12 +5,12 @@ Feature: As a restaurant owner
 
   Background:
     Given the following owners exist:
-      | name | email             |
-      | Anna | anna@fuckhead.com |
+      | name | email           |
+      | Anna | anna@random.com |
     And "Anna" has a restaurant
     And there is one dish in my cart
 
-  Scenario: I do checkout
+  Scenario: I check out and pay with my credit card
     Given I am logged in as a user
     And I am on the "cart" page
     When I click the "Pay with Card" stripe button
@@ -38,5 +38,3 @@ Feature: As a restaurant owner
     And I check out but something goes wrong
     Then I should be on the "cart" page
     Then I should see "The card was declined Please try again"
-
-

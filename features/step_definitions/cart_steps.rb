@@ -75,15 +75,11 @@ And(/^I submit the stripe form$/) do
   Capybara.within_frame stripe_iframe do
     click_button "Pay kr#{sprintf('%.2f', cart.total.to_i)}"
   end
-  sleep(1)
+  # sleep(1) --> Uncomment this line if you're running live tests with actual API calls to Stripe
 end
 
 When(/^I click the "([^"]*)" stripe button$/) do |arg|
   find('.stripe-button-el').trigger('click')
-end
-
-And(/^I wait for Stripe to respond$/) do
-  loop until all(:xpath, '//input[contains(@name, "stripeToken")]').length == 1
 end
 
 Then(/^my order should be registered in the system$/) do
