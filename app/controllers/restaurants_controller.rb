@@ -6,11 +6,7 @@ class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.all
     gon.restaurants = @restaurants
-    if Restaurant::PERMITTED_CATEGORIES.include? 'All Restaurants'
-      @select_options = Restaurant::PERMITTED_CATEGORIES
-    else
-      @select_options = Restaurant::PERMITTED_CATEGORIES.insert(0, 'All Restaurants')
-    end
+    @select_options = Restaurant::PERMITTED_CATEGORIES.dup.insert(0, 'All Restaurants')
   end
 
   def new
