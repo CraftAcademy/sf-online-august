@@ -15,7 +15,7 @@ $(document).ready(function () {
     addMarkers();
 });
 function addMarkers() {
-  if (gon.global.selected_restaurants != 'none' && gon.global.selected_restaurants.length > 0) {
+  if (gon.global.selected_restaurants.length > 0) {
     gon.global.selected_restaurants.forEach(function (restaurant) {
         map.addMarker({
             lat: restaurant.latitude,
