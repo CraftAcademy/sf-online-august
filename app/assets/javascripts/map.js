@@ -10,18 +10,14 @@ $(document).ready(function () {
 });
 function addMarkers() {
   if (gon.global.selected_restaurants != 'none' && gon.global.selected_restaurants.length > 0) {
-    console.log("You're in selected restaurants" + gon.global.selected_restaurants);
     gon.global.selected_restaurants.forEach(function (restaurant) {
-      console.log(restaurant.latitude + " " + restaurant.longitude);
         map.addMarker({
             lat: restaurant.latitude,
             lng: restaurant.longitude
         });
     });
     delete gon.global.selected_restaurants;
-    console.log("Here's the selected_restaurants: " + gon.global.selected_restaurants);
   } else {
-        console.log("You're in all restaurants");
         gon.restaurants.forEach(function (restaurant) {
             map.addMarker({
                 lat: restaurant.latitude,
