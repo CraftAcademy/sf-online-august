@@ -9,10 +9,10 @@ Feature: As a Customer
       | Janne | janne@food.se | owner |
 
     And the following restaurants exists
-      | name | description | town | owner |
-      | McD  | Nice food   | Home | Anna  |
-      | McF  | Nice food   | Gone | Janne |
-
+      | name | description | zipcode | owner  | category |
+      | McD  | Nice food   | 41463   | Anna   | Pizza    |
+      | McF  | Nice food   | 41677   | Janne  | Pizza    |
+      | Jam  | Jam  food   | 41509   | Henrik | Thai     |
     And I am on the "index" page
 
   @javascript
