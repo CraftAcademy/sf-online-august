@@ -24,6 +24,7 @@ Feature: As a Customer
   Scenario: Can only checkout as registered user
     Given there is one dish in my cart
     And I am on the "cart" page
+    Then I should not see "Pay with Card"
     When I click the link "Log in to pay"
     Then I should be on the "register" page
     When I register as a user with username "Amber" and email "amber@random.com"
