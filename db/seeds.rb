@@ -35,7 +35,7 @@ def build_menus_with_dishes(menu_names)
   Restaurant.all.each do |restaurant|
     menu_names.each do |menu_name|
       #menu = Menu.create(name: menu_name, restaurant: restaurant)
-      menu = Menu.create(title: menu_name, restaurant: Restaurant.all.sample)
+      menu = Menu.create(title: menu_name, restaurant: restaurant)
 
       3.times { |i| add_dish(i + 1, menu, restaurant) }
     end
