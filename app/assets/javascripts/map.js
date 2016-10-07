@@ -4,7 +4,12 @@ $(document).ready(function () {
         div: '#map',
         lat: 57.690123,
         lng: 11.950632,
-        zoom: 13
+        zoom: 13,
+        zoomControlOptions: {
+              position: google.maps.ControlPosition.LEFT_BOTTOM
+          },
+        mapTypeControl: false,
+        streetViewControl: false
     });
     performGeolocation();
     addMarkers();
