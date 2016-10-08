@@ -15,33 +15,27 @@ $(document).ready(function () {
     performGeolocation();
 });
 function addMarkers() {
-  if(selection == ('All Restaurants') ){
+  if(selection == ('All Restaurants')){
     map.removeMarkers();
     gon.all_restaurants.forEach(function (restaurant) {
-      if(restaurant.latitude !== null) {
-        map.addMarker({
-            lat: restaurant.latitude,
-            lng: restaurant.longitude,
-            infoWindow: {
-                content: "<a href='/restaurants/" + restaurant.id + "'>" + restaurant.name + "</a>"
-            }
-          });
-        }
-      }
-    );
+      placeMarkers(restaurant);
+    });
   } else {
     map.removeMarkers();
         gon.all_restaurants.forEach(function (restaurant) {
-          if(restaurant.latitude !== null) {
           if(restaurant.category == selection){
-            map.addMarker({
-                lat: restaurant.latitude,
-                lng: restaurant.longitude,
-                infoWindow: {
-                    content: "<a href='/restaurants/" + restaurant.id + "'>" + restaurant.name + "</a>"
-                }
-            });
+            placeMarkers(restaurant);
           }
+        });
+    }
+}
+function placeMarkers(restaurant) {
+  if(restaurant.latitude !== null) {
+    map.addMarker({
+        lat: restaurant.latitude,
+        lng: restaurant.longitude,
+        infoWindow: {
+            content: "<a href='/restaurants/" + restaurant.id + "'>" + restaurant.name + "</a>"
         }
       });
     }
