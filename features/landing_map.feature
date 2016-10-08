@@ -31,3 +31,11 @@ Feature: As a Customer
   Scenario: Viewing restaurants on the map by category
     When I select "Pizza" from "category"
     Then I should see "2" markers
+
+  # Scenario: One bad restaurant geocoding doesn't ruin the whole display
+  #   Given the following restaurants exists
+  #   | name     | description | zipcode | owner  | category |
+  #   | McNoZip  | Nice food   | 0       | Emma   | Pizza    |
+  #   And I am on the "index" page
+  #   When I select "Vegan" from "category"
+  #   Then I should see "2" markers
