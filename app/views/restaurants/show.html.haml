@@ -29,11 +29,11 @@
     %h3 Highlighted Dishes
     - @restaurant.dishes.where(highlight: true).limit(6).each do |dish|
       .col-sm-4
-        .dish_name
+        .dish.h4
           = dish.name
-        .dish_description
+        .dish
           = dish.description
-        .dish_price
+        .dish
           = dish.price
         .order_button
           - if can? :create, ShoppingCart
