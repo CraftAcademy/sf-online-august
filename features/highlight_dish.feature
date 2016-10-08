@@ -17,4 +17,9 @@ Scenario: I add a dish to the highlight list
   And I click the "Submit" button
   When I am on my restaurant page
   Then I should see "Pizza"
-  And I should see "Add to cart"
+
+Scenario: I view the restaurant page as a visitor
+  Given I am not logged in
+  And "Pizza" is a highlighted dish
+  When I am on my restaurant page
+  Then I should see "Add to cart"

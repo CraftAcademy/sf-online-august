@@ -105,6 +105,13 @@ When(/^I log in as "([^"]*)"$/) do |name|
   login_as(user, scope: :user)
 end
 
+Given(/^"([^"]*)" is a highlighted dish$/) do |dish_name|
+  dish = Dish.find_by(name: dish_name)
+  dish.highlight = true
+  dish.save
+  expect(dish.highlight).to eq true
+end
+
 private
 def set_user(name)
   @user = User.find_by(name: name)
