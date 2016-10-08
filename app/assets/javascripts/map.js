@@ -30,7 +30,10 @@ function addMarkers() {
           if(restaurant.category == selection){
             map.addMarker({
                 lat: restaurant.latitude,
-                lng: restaurant.longitude
+                lng: restaurant.longitude,
+                infoWindow: {
+                    content: "<a href='/restaurants/'" + restaurant.id + ">" + restaurant.name + "</a>"
+                }
             });
           }
         });
