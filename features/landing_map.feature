@@ -32,6 +32,4 @@ Feature: As a Customer
     When I select "Pizza" from "category"
     Then I should see "2" markers
 
-  Scenario: Viewing restaurants on the map by category
-    When I select "Thai" from "category"
-    Then I should see "2" markers
+  
