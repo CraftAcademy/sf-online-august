@@ -35,6 +35,15 @@ end
 
 Then(/^I should see "([^"]*)" (?:marker|markers)$/) do |count|
   sleep(1)
-  expected_count = page.evaluate_script('map.markers.length')
+  expected_count = page.evaluate_script('map.markers.length;')
   expect(expected_count).to eq count.to_i
+end
+
+
+Then(/^the center of the map should be approximately "([^"]*)" lat and "([^"]*)" lng$/) do |lat, lng|
+  accepted_offset = 0.2
+  center_lat = page.evaluate_script('map.getCenter().lat();')
+  center_lng = page.evaluate_script('map.getCenter().lng();')
+  expect(center_lat).to be_within(accepted_offset).of(lat.to_f)
+  expect(center_lng).to be_within(accepted_offset).of(lng.to_f)
 end

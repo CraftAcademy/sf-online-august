@@ -19,7 +19,7 @@ Feature: As a Customer
   Scenario: Viewing my location on the map
     Given my location is set to "57.7088700" lat and "11.9745600" lng
     And the map has been loaded
-    # How could we test for the map actually centering on the user?
+    Then the center of the map should be approximately "57.7088700" lat and "11.9745600" lng
 
   Scenario: Viewing the restaurants on the map
     Given my location is set to "57.7088700" lat and "11.9745600" lng
@@ -30,4 +30,8 @@ Feature: As a Customer
 
   Scenario: Viewing restaurants on the map by category
     When I select "Pizza" from "category"
+    Then I should see "2" markers
+
+  Scenario: Viewing restaurants on the map by category
+    When I select "Thai" from "category"
     Then I should see "2" markers
