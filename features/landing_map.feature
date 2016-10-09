@@ -35,6 +35,5 @@ Feature: As a Customer
     Given I select "Thai" from "category"
     And the map has been loaded
     And I click on the marker for "Jam"
-    Then I should see an info window for Jam
-    Then show me an image of the page
+    Then I should see an info window for "Jam"
 
