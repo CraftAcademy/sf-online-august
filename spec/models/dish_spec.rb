@@ -9,9 +9,14 @@ RSpec.describe Dish, type: :model do
     it { is_expected.to have_db_column :calories }
     it { is_expected.to have_db_column :ingredients }
     it { is_expected.to have_db_column :highlight }
+    it { is_expected.to have_db_column :image_file_name }
+    it { is_expected.to have_db_column :image_content_type }
+    it { is_expected.to have_db_column :image_file_size }
 
     it { is_expected.to have_and_belong_to_many :menus }
     it { is_expected.to belong_to :restaurant }
+    # it { is_expected.to have_attached_file :image } --> Turn this on to see weird error. Don't know what's going on, exactly.
+
   end
 
   describe 'Validations' do
