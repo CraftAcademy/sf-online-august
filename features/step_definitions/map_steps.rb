@@ -19,17 +19,15 @@ Given(/^my location is set to "([^"]*)" lat and "([^"]*)" lng$/) do |lat, lng|
   simulate_location(latitude, longitude)
 end
 
-When(/^(?:I expect a Google map to load|the map has been loaded)$/)do
+When(/^(?:I expect a Google map to load|the map has been loaded)$/) do
   sleep(1)
   expect(page).to have_css '#map .gm-style'
 end
 
 
 def simulate_location(lat, lng)
-  page.execute_script("GMaps.geolocate({
-                        success: function (position) {
-                        map.setCenter(#{lat}, #{lng})}
-                        });")
+  page.execute_script("performGeolocation(#{lat}, #{lng})")
+  sleep(1)
 end
 
 
@@ -46,4 +44,19 @@ Then(/^the center of the map should be approximately "([^"]*)" lat and "([^"]*)"
   center_lng = page.evaluate_script('map.getCenter().lng();')
   expect(center_lat).to be_within(accepted_offset).of(lat.to_f)
   expect(center_lng).to be_within(accepted_offset).of(lng.to_f)
+end
+
+And(/^I click on the marker for "([^"]*)"$/) do |title|
+  page.execute_script(" var m = map.markers.find(function(marker){
+                                   return marker.title == '#{title}'
+                                });
+                       google.maps.event.trigger(m, 'click');
+                      ")
+  # it works in console but this script is causing errors the we activate js_errors for Poltergeist
+end
+
+Then(/^I should see an info window for Jam$/) do
+  sleep(2)
+  #Here we want to get the marker again and make sure that
+  # marker.infoWindow.anchor.visible == true
 end

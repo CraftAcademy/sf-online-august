@@ -34,13 +34,14 @@ function placeMarkers(restaurant) {
     map.addMarker({
         lat: restaurant.latitude,
         lng: restaurant.longitude,
+        title: restaurant.name,
         infoWindow: {
             content: "<a href='/restaurants/" + restaurant.id + "'>" + restaurant.name + "</a>"
         }
       });
     }
 }
-function performGeolocation() {
+function performGeolocation(lat, lng) {
   var latitude;
   var longitude;
   var testing_env = $('#map').data().testEnv;
@@ -59,8 +60,8 @@ function performGeolocation() {
           }
       });
   } else {
-      latitude = 57.690123;
-      longitude = 11.950632;
+      latitude = lat || 57.690123;
+      longitude = lng || 11.950632;
       map.setCenter(latitude, longitude);
   }
 }
