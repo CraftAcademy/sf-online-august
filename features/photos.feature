@@ -8,6 +8,7 @@ Background:
   And I have the following dishes:
     | name |
     | Cake |
+    | Soup |
 
 Scenario: I add a photo to my dish
   Given I am on the edit dish page for "Cake"
@@ -18,3 +19,5 @@ Scenario: I add a photo to my dish
   And I should see a dish image
 
 Scenario: I view a page with no dish image
+  Given I am on the dish page for "Soup"
+  Then I should not see the missing image placeholder

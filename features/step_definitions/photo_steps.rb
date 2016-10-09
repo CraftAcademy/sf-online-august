@@ -9,3 +9,7 @@ end
 Then(/^I should see a dish image$/) do
   expect(page).to have_css("img[src*='georgeandamber.jpg']")
 end
+
+Then(/^I should not see the missing image placeholder$/) do
+  expect(page).not_to have_css("img[src*='missing.png']")
+end
