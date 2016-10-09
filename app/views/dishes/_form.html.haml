@@ -11,6 +11,8 @@
   = form.text_field :calories, class: 'form-control'
   = form.label :ingredients, 'Ingredients'
   = form.text_field :ingredients, class: 'form-control'
+  = form.label :image, 'Upload an image'
+  = form.file_field :image
   %p.form-group
     = form.label :highlight
     = form.check_box :highlight
