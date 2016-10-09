@@ -24,6 +24,7 @@ RSpec.configure do |config|
     DatabaseCleaner.cleaning do
       example.run
     end
+    FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
   end
 end
 

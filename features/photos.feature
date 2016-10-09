@@ -12,7 +12,7 @@ Background:
 Scenario: I add a photo to my dish
   Given I am on the edit dish page for "Cake"
   Then I should see "Upload an image"
-  When I select an image
+  When I add an image to "Cake"
   And I click the "Submit" button
   Then I should be on the dish page for "Cake"
   And I should see a dish image
