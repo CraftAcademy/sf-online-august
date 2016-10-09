@@ -21,3 +21,9 @@ Scenario: I add a photo to my dish
 Scenario: I view a page with no dish image
   Given I am on the dish page for "Soup"
   Then I should not see the missing image placeholder
+
+Scenario: I view the restaurant page with highlighted dish and image
+  Given I add an image to "Cake"
+  And "Cake" is a highlighted dish
+  And I am on my restaurant page
+  Then I should see a dish image
