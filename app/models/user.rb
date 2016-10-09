@@ -26,6 +26,6 @@ class User < ApplicationRecord
   end
 
   def has_restaurant?
-    self.restaurant != nil
+    self.restaurant != nil && self.restaurant.id != nil
   end
 end
