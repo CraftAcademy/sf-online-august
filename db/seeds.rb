@@ -55,7 +55,7 @@ def add_dish(number, menu, restaurant)
               description: "A great #{restaurant.category} dish!",
               # category: Dish::CATEGORIES.sample
               menu_ids: menu.id,
-              restaurant_id: restaurant.id,
+              restaurant: restaurant,
               highlight: highlight
               )
 end
