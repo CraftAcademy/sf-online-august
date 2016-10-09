@@ -12,3 +12,8 @@ Background:
 Scenario: I add a photo to my dish
   Given I am on the edit dish page for "Cake"
   Then I should see "Upload an image"
+  # When I select an image
+  And I click the "Upload" button
+  And I click the "Submit" button
+  Then I should be on the dish page for "Cake"
+  And I should see my image
