@@ -20,7 +20,7 @@
               Restaurant
               %strong.caret
             %ul.dropdown-menu
-              - unless current_user.restaurant.nil? || current_user.restaurant.id.nil?
+              - if current_user.has_restaurant?
                 %li
                   = link_to 'Show your restaurant', restaurant_path(current_user.restaurant)
                 %li

@@ -24,4 +24,8 @@ class User < ApplicationRecord
   def customer?
     self.role == 'customer'
   end
+
+  def has_restaurant?
+    self.restaurant != nil
+  end
 end
