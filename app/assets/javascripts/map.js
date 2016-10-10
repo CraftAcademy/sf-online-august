@@ -1,5 +1,5 @@
 var map;
-$(document).ready(function () {
+document.addEventListener("turbolinks:load", function() {
     map = new GMaps({
         div: '#map',
         lat: 57.690123,
