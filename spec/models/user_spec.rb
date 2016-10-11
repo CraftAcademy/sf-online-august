@@ -17,8 +17,8 @@ RSpec.describe User, type: :model do
   end
 
   describe 'associations' do
-    it { is_expected.to have_many :shopping_carts }
-    it { is_expected.to have_one :restaurant }
+    it { is_expected.to have_many(:shopping_carts).dependent(:destroy) }
+    it { is_expected.to have_one(:restaurant).dependent(:destroy) }
   end
 
   describe 'Factory' do
@@ -31,7 +31,6 @@ RSpec.describe User, type: :model do
     it 'is a customer by default' do
       expect(subject.role).to eq 'customer'
     end
-
 
     it 'can set the role to restaurant owner' do
       owner = create(:user, role: 'owner')
@@ -66,6 +65,18 @@ RSpec.describe User, type: :model do
     it '#owners' do
       expect(User.owners).to include owner
       expect(User.owners).not_to include customer
+    end
+  end
+
+  describe 'Owner methods' do
+    let(:owner) { create(:user, email: 'whatever@random_restaurant.com', role: 'owner') }
+    let(:restaurant) { create(:restaurant, user: User.first) }
+
+    it 'has a restaurant' do
+      owner.name = "Fred"
+      restaurant.name = "Fred's Restaurant"
+      # I know this is stupid, but the user and restaurant weren't showing up in this 'it' block!
+      expect(owner.has_restaurant?).to eq true
     end
 
   end

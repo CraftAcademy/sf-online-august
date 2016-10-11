@@ -4,7 +4,10 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'cancan/matchers'
+require 'paperclip/matchers'
 ActiveRecord::Migration.maintain_test_schema!
+
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
@@ -12,6 +15,8 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+  config.include Paperclip::Shoulda::Matchers
+  config.include ResponseJSON
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
@@ -22,6 +27,7 @@ RSpec.configure do |config|
     DatabaseCleaner.cleaning do
       example.run
     end
+    FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
   end
 end
 

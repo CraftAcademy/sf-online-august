@@ -1,18 +1,29 @@
-= form_for @dish, class: 'form-group' do |form|
-  = form.label :dish_name, 'Dish Name'
-  = form.text_field :dish_name, class: 'form-control'
-  = form.label :dish_desc, 'Dish description'
-  = form.text_area :dish_desc, class: 'form-control'
+= form_for @dish, html: {multipart: true, class: 'form-group'} do |form|
+  = form.label :name, 'Dish Name'
+  = form.text_field :name, class: 'form-control'
+  = form.label :description, 'Dish description'
+  = form.text_area :description, class: 'form-control'
   = form.label :category
   = form.select :category, options_for_select(Dish::PERMITTED_DISH_CATEGORIES), class: 'form-control'
-  = form.label :dish_price, 'Price'
-  = form.text_field :dish_price, class: 'form-control'
-  = form.label :dish_allergy, 'Allergy Info'
-  = form.text_area :dish_allergy, class: 'form-control'
-  = form.label :dish_cal, 'Calories'
-  = form.text_field :dish_cal, class: 'form-control'
-  = form.label :dish_ingredients, 'Ingredients'
-  = form.text_field :dish_ingredients, class: 'form-control'
+  = form.label :price, 'Price'
+  = form.text_field :price, class: 'form-control'
+  = form.label :allergies, 'Allergy Info'
+  = form.text_area :allergies, class: 'form-control'
+  = form.label :calories, 'Calories'
+  = form.text_field :calories, class: 'form-control'
+  = form.label :ingredients, 'Ingredients'
+  = form.text_field :ingredients, class: 'form-control'
+  -# - if @dish.image?
+  -#   = image_tag @dish.image.url
+  -# - else
+  -#   = image_tag '', id: 'preview', style: 'min-width: 130px; min-height: 130px;', onChange: 'readAndPreviewImage(this);'
+  %p
+    = form.label :image, 'Upload an image'
+    = form.file_field :image
+  %p.form-group
+    = form.label :highlight
+    = form.check_box :highlight
+
   %p#menus
     - if !@menus.nil?
       %h3 Add to Menu
@@ -21,3 +32,16 @@
           = b.check_box + b.label
   %p
     = form.submit 'Submit', class: 'btn btn-warning'
+
+-# :javascript
+-#   function readAndPreviewImage(input) {
+-#     if (input.files && input.files[0]) {
+-#       var reader = new FileReader();
+-#       reader.onload = function (e) {
+-#         $('#preview')
+-#           .fadeIn("slow")
+-#           .attr('src', e.target.result);
+-#       };
+-#       reader.readAsDataURL(input.files[0]);
+-#     }
+-#   }

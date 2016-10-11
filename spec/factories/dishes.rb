@@ -1,12 +1,12 @@
 FactoryGirl.define do
   factory :dish do
-    dish_name 'MyString'
+    name 'MyString'
     category 'MyString'
-    dish_desc 'MyText'
-    dish_price 1
-    dish_allergy 'MyText'
-    dish_cal 1
-    dish_ingredients 'MyText'
+    description 'MyText'
+    price 1
+    allergies 'MyText'
+    calories 1
+    ingredients 'MyText'
     restaurant {association(:restaurant)}
   end
 end

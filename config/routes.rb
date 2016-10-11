@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   post '/checkout', controller: :carts, action: :checkout
 
   resources :restaurants, only: [:index, :new, :create, :show, :edit, :update]
-  resources :dishes, only: [:new, :show, :create, :edit, :update] do
 
+  resources :dishes, only: [:new, :show, :create, :edit, :update] do
     post 'add_item', controller: :carts, action: :add_item
   end
 
@@ -15,7 +15,11 @@ Rails.application.routes.draw do
 
   resources :menus, only: [:index, :create, :new, :show, :edit, :update]
 
-  #resources :charges, only: [:new, :create]
-
   root to: 'restaurants#index'
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :restaurants, only: [:index, :show]
+    end
+  end
 end
