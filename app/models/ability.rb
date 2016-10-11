@@ -9,6 +9,7 @@ class Ability
       can :manage, Dish do |dish|
         dish.restaurant.user == user
       end
+      can :create, Dish
       can :manage, Restaurant, user_id: user.id
       cannot :create, ShoppingCart
       can :read, :all
