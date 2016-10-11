@@ -1,5 +1,4 @@
 klasses = [ShoppingCartItem, ShoppingCart, Dish, Menu, Restaurant, User]
-klasses = [ShoppingCartItem, ShoppingCart, Dish, Menu, Restaurant, User]
 old_counts = klasses.map(&:count)
 should_prompt = old_counts.min  0
 

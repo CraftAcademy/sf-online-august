@@ -19,7 +19,7 @@
         %br/
       - unless cannot? :create, ShoppingCart
         = link_to 'Add to cart', dish_add_item_path(@dish), method: :post, class: 'btn btn-success'
-      - if can? :manage, Dish
+      - if can? :manage, @dish
         = link_to 'Edit dish', edit_dish_path(@dish), class: 'btn btn-primary'
     .col-md-6
       - unless @dish.image_file_name.nil?
