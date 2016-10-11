@@ -1,4 +1,3 @@
-@javascript
 Feature: As a Restaurant Owner
   in order to make my dishes enticing
   I want to be able to upload a photo of a dish.
@@ -17,6 +16,7 @@ Scenario: I add a photo to my dish
   When I add an image to "Cake"
   And I click the "Submit" button
   Then I should be on the dish page for "Cake"
+  And show me the page
   And I should see a dish image
 
 Scenario: I view a page with no dish image
