@@ -24,6 +24,8 @@ Scenario: I view a page with no dish image
 
 Scenario: I view the restaurant page with highlighted dish and image
   Given I add an image to "Cake"
+  And I click the "Submit" button
   And "Cake" is a highlighted dish
   And I am on my restaurant page
+  And show me the page
   Then I should see a dish image
