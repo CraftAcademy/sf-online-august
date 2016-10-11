@@ -27,5 +27,4 @@ Scenario: I view the restaurant page with highlighted dish and image
   And I click the "Submit" button
   And "Cake" is a highlighted dish
   And I am on my restaurant page
-  And show me the page
   Then I should see a dish image
