@@ -19,7 +19,8 @@ gem 'gon'
 gem 'stripe-rails'
 gem 'colored' #colors in terminal Used in seeds.rb
 gem 'faker'
-gem "paperclip", "~> 5.0.0"
+gem 'paperclip', '~> 5.0.0'
+gem 'aws-sdk'
 
 
 group :development, :test do
