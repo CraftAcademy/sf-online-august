@@ -27,10 +27,6 @@ vendor/bundle/
 
 #ignore the env file
 .env
-<<<<<<< HEAD
-
-#ignore image uploads
-public/system/*
 
 #ignore Paperclip-generated test files
 /spec/test_files/*
