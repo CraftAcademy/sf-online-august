@@ -14,7 +14,7 @@ class Ability
       cannot :manage, Menu
       cannot :manage, Dish
       cannot :manage, Restaurant
-      can :manage, ShoppingCart
+      can :create, ShoppingCart
       can :read, :all
     end
 

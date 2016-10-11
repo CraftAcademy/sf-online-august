@@ -43,7 +43,7 @@ class DishesController < ApplicationController
                                  :allergies,
                                  :ingredients,
                                  :calories,
-                                 :category
+                                 :category,
                                  {menu_ids: []},
                                  :highlight,
                                  :image)
