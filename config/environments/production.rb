@@ -38,4 +38,6 @@ Rails.application.configure do
       s3_region: ENV['AWS_REGION']
     }
   }
+  Paperclip::Attachment.default_options[:path] = 'slow_food_images/:class/:id_partition/:style.:extension'
+
 end
