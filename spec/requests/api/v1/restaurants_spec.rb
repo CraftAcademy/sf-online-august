@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::RestaurantsController, type: :request do
-  
+
   describe 'GET /v1/restaurants' do
     let!(:owner) do
       create(:user, email: 'whatever@random_restaurant.com', role: 'owner')
@@ -43,11 +43,13 @@ RSpec.describe Api::V1::RestaurantsController, type: :request do
     let!(:menu2) { create(:menu, title: 'menu2', restaurant: restaurant) }
     let!(:dish) { create(:dish, name: 'dish1', restaurant: restaurant) }
     let!(:dish2) { create(:dish, name: 'dish2', restaurant: restaurant) }
+    let!(:dish3) { create(:dish, name: 'dish3', restaurant: restaurant) }
 
 
     it 'should return json with restaurant, menus and dishes on show' do
       menu.dishes << dish
       menu2.dishes << dish2
+      menu2.dishes << dish3
       get "/api/v1/restaurants/#{restaurant.id}"
 
       expected_response = {
@@ -62,9 +64,19 @@ RSpec.describe Api::V1::RestaurantsController, type: :request do
           'longitude' => 11.9448777,
           'category' => 'Thai',
           'menus' => [{'title' => menu.title,
-                        'dishes' => [{ 'dish' => dish.name }]},
+                        'dishes' => [{ 'name' => dish.name,
+                                       'description' => dish.description,
+                                       'price' => dish.price,
+                                       'category' => dish.category }]},
                       {'title' => menu2.title,
-                        'dishes' => [{ 'dish' => dish2.name }]}]
+                        'dishes' => [{ 'name' => dish2.name,
+                                       'description' => dish2.description,
+                                       'price' => dish2.price,
+                                       'category' => dish2.category },
+                                     { 'name' => dish3.name,
+                                       'description' => dish3.description,
+                                       'price' => dish3.price,
+                                       'category' => dish3.category }]}]
       }
       expect(response_json).to eq expected_response
     end
