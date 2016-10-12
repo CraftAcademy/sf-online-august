@@ -67,16 +67,19 @@ RSpec.describe Api::V1::RestaurantsController, type: :request do
                         'dishes' => [{ 'name' => dish.name,
                                        'description' => dish.description,
                                        'price' => dish.price,
-                                       'category' => dish.category }]},
+                                       'category' => dish.category,
+                                       'id' => dish.id }]},
                       {'title' => menu2.title,
                         'dishes' => [{ 'name' => dish2.name,
                                        'description' => dish2.description,
                                        'price' => dish2.price,
-                                       'category' => dish2.category },
+                                       'category' => dish2.category,
+                                       'id' => dish2.id },
                                      { 'name' => dish3.name,
                                        'description' => dish3.description,
                                        'price' => dish3.price,
-                                       'category' => dish3.category }]}]
+                                       'category' => dish3.category,
+                                       'id' => dish3.id}]}]
       }
       expect(response_json).to eq expected_response
     end
