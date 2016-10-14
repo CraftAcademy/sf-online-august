@@ -10,8 +10,12 @@ class Api::V1::CartsController < ApplicationController
 
   def update
     @cart = ShoppingCart.find_or_create_by(id: params[:cart_id])
-    dish = Dish.find(params[:dish_id])
-    @cart.add(dish, dish.price)
+    begin
+      dish = Dish.find(params[:dish_id])
+      @cart.add(dish, dish.price)
+    rescue
+      render json: ({'error' => 'Dish ID was invalid'})
+    end
   end
 
 end
