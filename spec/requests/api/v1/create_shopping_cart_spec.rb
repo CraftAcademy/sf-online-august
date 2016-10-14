@@ -12,19 +12,23 @@ RSpec.describe Api::V1::CartsController do
     expect(response_json).to eq({'cart_id' => 1, 'dish_id' => dish.id})
   end
 
-  it 'adds a second dish to the cart' do
-    cart = ShoppingCart.create
-    cart.add(dish, dish.price)
-    put "/api/v1/carts/#{cart.id}", {params: {dish_id: dish2.id, cart_id: cart.id}}
+  describe 'adding more dishes to cart' do
+    let(:cart) { create(:shopping_cart)}
 
-    expect(response_json).to eq({'cart_id' => cart.id, 'dishes' => [{'dish_id' => dish.id}, {'dish_id' => dish2.id}]})
+    it 'adds a second dish to the cart' do
+      cart.add(dish, dish.price)
+      put "/api/v1/carts/#{cart.id}", {params: {dish_id: dish2.id, cart_id: cart.id}}
+
+      expect(response_json).to eq({'cart_id' => cart.id, 'dishes' => [{'dish_id' => dish.id}, {'dish_id' => dish2.id}]})
+    end
+
+    it 'fails to add a second dish to the cart' do
+      cart.add(dish, dish.price)
+      put "/api/v1/carts/#{cart.id}", {params: {dish_id: 'garbage', cart_id: cart.id}}
+
+      expect(response_json).to eq({'error' => 'Dish ID was invalid'})
+    end
+
   end
 
-  it 'fails to add a second dish to the cart' do
-    cart = ShoppingCart.create
-    cart.add(dish, dish.price)
-    put "/api/v1/carts/#{cart.id}", {params: {dish_id: 'garbage', cart_id: cart.id}}
-
-    expect(response_json).to eq({'error' => 'Dish ID was invalid'})
-  end
 end
