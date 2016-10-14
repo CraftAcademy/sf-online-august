@@ -10,7 +10,7 @@ class Api::V1::CartsController < ApplicationController
   end
 
   def update
-    @cart = ShoppingCart.find_or_create_by(id: params[:cart_id])
+    @cart = ShoppingCart.find_or_create_by(id: params[:id])
     begin
       dish = Dish.find(params[:dish_id])
       @cart.add(dish, dish.price)
